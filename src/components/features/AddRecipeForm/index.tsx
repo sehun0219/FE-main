@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { Title, Container, Label, Input, Button } from "./styled";
+import ThumbnailUploader from "./ThumbnailUploader";
 
 const RecipeForm: React.FC = () => {
   const [title, setTitle] = useState("");
+  const [thumbnailUrl, setThumbnailUrl] = useState<string | undefined>();
   const [introduction, setIntroduction] = useState("");
-  const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [youtubeUrl, setYoutubeUrl] = useState("");
   const [category, setCategory] = useState("");
   const [servingSize, setServingSize] = useState("");
@@ -21,12 +22,6 @@ const RecipeForm: React.FC = () => {
   const [completeImage, setCompleteImage] = useState("");
   const [cookingTips, setCookingTips] = useState("");
   const [tags, setTags] = useState("");
-
-  const handleUpLoadThumbnail = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files) {
-      setSelectedFile(e.target.files[0]);
-    }
-  };
 
   const handleIngredientsChange = (index: number, value: string) => {
     setIngredients((prev) =>
@@ -45,8 +40,8 @@ const RecipeForm: React.FC = () => {
   const handleCancel = () => {
     // 폼을 초기화합니다.
     setTitle("");
-    setSelectedFile(null);
     setIntroduction("");
+    setThumbnailUrl(undefined);
     setYoutubeUrl("");
     setCategory("");
     setServingSize("");
@@ -57,6 +52,13 @@ const RecipeForm: React.FC = () => {
     setTags("");
   };
 
+  const handleFileChange = (file: File | null) => {
+    if (file) {
+      setThumbnailUrl(URL.createObjectURL(file));
+    } else {
+      setThumbnailUrl(undefined);
+    }
+  };
   return (
     <Container>
       <Title>Recipe Title</Title>
@@ -66,9 +68,11 @@ const RecipeForm: React.FC = () => {
         placeholder="e.g Tomato Pasta So Delicious, I'd Almost Toss My Fork!"
         onChange={(e) => setTitle(e.target.value)}
       />
-      <Button>Add Thumbnail</Button>
-      <Input type="file" onChange={handleUpLoadThumbnail} />
-
+      <Label>Thumbnail upload</Label>
+      <ThumbnailUploader
+        onFileChange={handleFileChange}
+        thumbnail={thumbnailUrl}
+      />
       <Label>Short comment of your dish</Label>
       <Input
         placeholder="Please explain the origin of this dish, e.g. it's a quick dish when you're hungry at home alone! "
@@ -123,13 +127,12 @@ const RecipeForm: React.FC = () => {
         />
       ))}
       <Button onClick={() => setIngredients((prev) => [...prev, ""])}>
-      + Add ingredients 
-
-      
+        + Add ingredients
       </Button>
+      <br />
       {steps.map((step, i) => (
         <div key={i}>
-          <Label>요리 순서 {i + 1}</Label>
+          <Label> Step {i + 1}</Label>
           <Input
             type="text"
             value={step}
