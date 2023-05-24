@@ -6,9 +6,9 @@ export interface User {
 }
 
 export interface RecipeData {
+  imgSrc?: string;
   creator: User;
   title: string;
   intro: string;
-  video?: string;
   viewCount: number;
 }

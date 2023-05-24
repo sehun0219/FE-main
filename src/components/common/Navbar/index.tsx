@@ -1,7 +1,6 @@
 import { useState, MouseEvent, ChangeEvent, useContext } from "react";
 import { Link } from "react-router-dom";
 import { UserContext } from "@/store/UserContext";
-import { SidebarButton } from "@/components/common/Sidebar/styled";
 
 import {
   NavbarLogo,
@@ -12,11 +11,7 @@ import {
   LinkButton,
 } from "./styled";
 
-interface NavbarProps {
-  onToggleButtonClick: (event: MouseEvent<HTMLButtonElement>) => void;
-}
-
-const Navbar = ({ onToggleButtonClick }: NavbarProps) => {
+const Navbar = () => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
 
   const [search, setSearch] = useState("");
@@ -44,16 +39,13 @@ const Navbar = ({ onToggleButtonClick }: NavbarProps) => {
 
   return (
     <NavbarContainer>
-      <SidebarButton onClick={onToggleButtonClick}>
-        Toggle Sidebar
-      </SidebarButton>
       <NavbarLogo>What should I eat</NavbarLogo>
       <SearchBar>
         <input
           type="text"
           value={search}
           onChange={handleSearch}
-          placeholder=" 검색내용.. "
+          placeholder=" Search.. "
         />
 
         <button onClick={handleSearchButton}>🔍</button>

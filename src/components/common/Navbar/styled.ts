@@ -11,7 +11,7 @@ export const NavbarContainer = styled.div`
 export const NavbarLogo = styled.div`
   color: #61dafb;
   font-size: 1.5em;
-  margin-left: 6em;
+  margin-left: 0.5em;
   margin-top: 0.2em;
 `;
 export const ButtonWrap = styled.div`

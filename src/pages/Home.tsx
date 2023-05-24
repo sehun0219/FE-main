@@ -1,19 +1,15 @@
 import BaseLayout from "@/components/common/BaseLayout";
 import Navbar from "@/components/common/Navbar";
-import Sidebar from "@/components/common/Sidebar";
-import { useState } from "react";
-const Home = () => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const handleToggleButtonClick = () => {
-    setIsSidebarOpen(!isSidebarOpen);
-  };
 
+const Home = () => {
   return (
     <BaseLayout>
       <header>
-        <Navbar onToggleButtonClick={handleToggleButtonClick} />
+        <Navbar />
       </header>
-      <Sidebar isOpen={isSidebarOpen} />
+      <main>
+        <h1>Home</h1>
+      </main>
     </BaseLayout>
   );
 };
