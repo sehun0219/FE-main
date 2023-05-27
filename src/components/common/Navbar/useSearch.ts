@@ -1,17 +1,17 @@
-import { useState } from 'react';
+import { ChangeEvent, useState } from "react";
 
 function useSearch() {
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
 
-  const handleSearchChange = (event) => {
-    setSearchTerm(event.target.value);
-  }
+  const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(e.target.value);
+  };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // TODO: 여기에 검색어를 처리하는 로직을 추가하세요.
+  const handleSubmit = (e: ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
+    // 검색어를 처리하는 로직
     console.log(searchTerm);
-  }
+  };
 
   return {
     searchTerm,

@@ -9,6 +9,7 @@ import {
   NavButton,
   SearchBar,
   LinkButton,
+  SearchBarInput,
 } from "./styled";
 
 const Navbar = () => {
@@ -41,14 +42,14 @@ const Navbar = () => {
     <NavbarContainer>
       <NavbarLogo>What should I eat</NavbarLogo>
       <SearchBar>
-        <input
+        <SearchBarInput
           type="text"
           value={search}
           onChange={handleSearch}
           placeholder=" Search.. "
         />
 
-        <button onClick={handleSearchButton}>🔍</button>
+        <button onClick={handleSearchButton}></button>
       </SearchBar>
 
       <ButtonWrap>
@@ -61,16 +62,7 @@ const Navbar = () => {
         {user?.name && token && (
           <>
             <NavbarLogo>Hello! {user.name}</NavbarLogo>
-            <div onClick={toggleDropdown}>
-              User Info
-              {isDropdownOpen && (
-                <div className="content">
-                  <Link to="/profile">Profile</Link>
-                  <Link to="/settings">Settings</Link>
-                </div>
-              )}
-            </div>
-            <LinkButton to="/add-recipe">add Recipe</LinkButton>
+            <LinkButton to="/add-recipe">Add Recipe</LinkButton>
             <NavButton onClick={handleLogout}>Logout</NavButton>
           </>
         )}
