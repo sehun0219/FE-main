@@ -16,23 +16,6 @@ export const FirstSectionInputWrap = styled.div`
   gap: 24px;
 `;
 
-export const ImgButton = styled.button`
-  width: 250px;
-  height: 250px;
-  background-color: #6969b3;
-  background: url(https://png.pngtree.com/png-vector/20191129/ourlarge/pngtree-image-upload-icon-photo-upload-icon-png-image_2047545.jpg)
-    no-repeat;
-  background-size: 40%;
-  background-position: center;
-  color: #6969b3;
-  font-size: 16px;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  padding-bottom: 20px;
-  cursor: pointer;
-`;
-
 export const FirstSection = styled.div`
   background-color: white;
   display: flex;
@@ -54,7 +37,7 @@ export const SecondSection = styled.div`
 
 export const Br = styled.div`
   background-color: #23272f;
-  width: full;
+  width: 100%;
   height: 10px;
 `;
 
@@ -103,7 +86,8 @@ export const StepExplanation = styled.span`
 `;
 export const StepForm = styled.div`
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
   margin-bottom: 20px;
 `;
 export const StepNumber = styled.p`
@@ -118,8 +102,29 @@ export const StepTextArea = styled.textarea`
   margin-bottom: 10px;
 `;
 export const StepImg = styled.img`
-  width: 160%;
-  height: auto;
+  width: 150px;
+  height: 100px;
   max-height: 200px;
   object-fit: cover;
+`;
+export const StepPlusButton = styled.button``;
+export const CompleteTitle = styled.p`
+  font-size: 20px;
+  font-weight: bold;
+  color: #333333;
+`;
+export const CompleteImgWrap = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+export const CompleteImg = styled.img`
+  width: 140px;
+  height: 140px;
+  margin: 4px;
+`;
+export const SaveButton = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 4px;
 `;

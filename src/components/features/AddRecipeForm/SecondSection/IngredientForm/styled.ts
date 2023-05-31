@@ -19,6 +19,8 @@ export const Title = styled.p`
 `;
 
 export const TextBox = styled.input`
+  display: flex;
+  justify-content: center;
   width: 300px;
   height: 50px;
   margin-right: 10px;
@@ -28,5 +30,4 @@ export const AddTextBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-left: 190px;
 `;
