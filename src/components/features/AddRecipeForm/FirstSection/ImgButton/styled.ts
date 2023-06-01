@@ -4,7 +4,7 @@ export const ImgButton = styled.button`
   width: 250px;
   height: 250px;
   background-color: #6969b3;
-  background: url(https://png.pngtree.com/png-vector/20191129/ourlarge/pngtree-image-upload-icon-photo-upload-icon-png-image_2047545.jpg)
+  background: url("https://png.pngtree.com/png-vector/20191129/ourlarge/pngtree-image-upload-icon-photo-upload-icon-png-image_2047545.jpg")
     no-repeat;
   background-size: 40%;
   background-position: center;

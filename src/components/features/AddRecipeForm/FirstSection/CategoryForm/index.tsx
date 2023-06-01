@@ -7,7 +7,12 @@ const CategoryForm = ({ title }: CategoryFormProps) => {
   return (
     <CategoryContainer>
       <Title>{title}</Title>
-      <Select id="cookingType1">
+      <Select
+        // onChange={() => {
+
+        // }}
+        id="cookingType1"
+      >
         <option value="hidden">종류별</option>
         <option value="value1_1">에피타이저</option>
         <option value="value1_2">매인디쉬</option>

@@ -46,21 +46,6 @@ export const Notice = styled.span`
   margin-bottom: 30px;
 `;
 
-export const AddButton = styled.button`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: none;
-  color: #293644;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-  margin: 4px auto;
-`;
-
 export const ThirdSection = styled.div`
   background-color: white;
   display: flex;
@@ -74,10 +59,9 @@ export const ThirdSection = styled.div`
 
 export const StepTitle = styled.p`
   width: 120px;
-  height: 50px;
+  height: 30px;
   font-size: 20px;
   font-weight: bold;
-  margin-bottom: 10px;
 `;
 export const StepExplanation = styled.span`
   display: block;

@@ -2,9 +2,10 @@ import { ChangeEvent } from "react";
 
 interface ImgButtonProps {
   onImageUpload: (file: File) => void;
+  imgUrl?: string;
 }
 
-const ImgButton = ({ onImageUpload }: ImgButtonProps) => {
+const ImgButton = ({ onImageUpload, imgUrl = "" }: ImgButtonProps) => {
   const handleImageUpload = (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files ? e.target.files[0] : null;
     if (file && onImageUpload) {
@@ -20,6 +21,7 @@ const ImgButton = ({ onImageUpload }: ImgButtonProps) => {
         onChange={handleImageUpload}
         id="upLoadButton"
       />
+      {imgUrl && <img src={imgUrl} alt="" />}
     </div>
   );
 };
