@@ -112,3 +112,9 @@ export const SaveButton = styled.div`
   align-items: center;
   margin: 4px;
 `;
+
+export const CookingTipWrap = styled.div``;
+export const CookingTipP = styled.p`
+  font-weight: bold;
+`;
+export const CookingTipTXT = styled.textarea``;

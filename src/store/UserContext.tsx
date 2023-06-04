@@ -19,7 +19,8 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
   const [token, setToken] = useState<string | null>(null);
   useEffect(() => {
     const userStorageItem = window.localStorage.getItem("userInfo") ?? null;
-    const token = window.localStorage.getItem("userInfo") ?? null;
+    const token = window.localStorage.getItem("tokenInfo") ?? null;
+
     if (userStorageItem) {
       const user = JSON.parse(userStorageItem);
       console.log(user);

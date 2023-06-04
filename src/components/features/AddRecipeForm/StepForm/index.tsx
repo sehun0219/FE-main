@@ -1,4 +1,4 @@
-import ImgButton from "@/components/features/AddRecipeForm/FirstSection/ImgButton";
+import ImgButton from "@/components/features/AddRecipeForm/ImgButton";
 
 interface Step {
   id: number;

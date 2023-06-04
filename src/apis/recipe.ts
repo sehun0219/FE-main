@@ -1,16 +1,18 @@
+// api/recipes.js
 import axios from "axios";
-import { RecipeData } from "@/interface/recipe";
-export const postAddRecipe = async (recipeData: RecipeData) => {
+
+export const uploadRecipe = async (formData: FormData) => {
   try {
-    const res = await axios.post(
-      "http://localhost:8080/recipe/add",
-      recipeData
-    );
-    if (res.status === 200) {
-      return res.data;
-    }
-    return null;
+    const response = await axios.post("http://localhost:8080/add", formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
+
+    console.log("Recipe saved successfully:", response.data);
+    return response.data;
   } catch (error) {
-    return null;
+    console.error("Failed to save the recipe:", error);
+    throw error;
   }
 };
