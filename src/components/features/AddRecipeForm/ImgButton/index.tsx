@@ -1,4 +1,5 @@
 import { ChangeEvent } from "react";
+import { UploadContainer, ImagePreview, FileInput, UploadText } from "./styled";
 
 interface ImgButtonProps {
   onImageUpload: (file: File) => void;
@@ -14,15 +15,16 @@ const ImgButton = ({ onImageUpload, imgUrl = "" }: ImgButtonProps) => {
   };
 
   return (
-    <div>
-      <input
+    <UploadContainer>
+      {!imgUrl && <UploadText>+ Add Picture</UploadText>}
+      <FileInput
         type="file"
         accept="image/*"
         onChange={handleImageUpload}
         id="upLoadButton"
       />
-      {imgUrl && <img src={imgUrl} alt="" />}
-    </div>
+      {imgUrl && <ImagePreview src={imgUrl} alt="Uploaded" />}
+    </UploadContainer>
   );
 };
 

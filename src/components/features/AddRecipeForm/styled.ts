@@ -8,6 +8,15 @@ export const Container = styled.div`
   background-color: #23272f;
   padding: 32px;
 `;
+export const AddRecipeTitle = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  background-color: #f8f8f8;
+  font-weight: bold;
+  font-size: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+`;
 
 export const FirstSectionInputWrap = styled.div`
   display: flex;
@@ -19,7 +28,7 @@ export const FirstSectionInputWrap = styled.div`
 export const FirstSection = styled.div`
   background-color: white;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   width: 100%;
   border-bottom: 1px solid #999999;
   padding-bottom: 32px;
@@ -28,7 +37,7 @@ export const FirstSection = styled.div`
 export const SecondSection = styled.div`
   background-color: white;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   flex-wrap: wrap;
   width: 100%;
   padding-bottom: 32px;
@@ -42,6 +51,9 @@ export const Br = styled.div`
 `;
 
 export const Notice = styled.span`
+  padding-left: 40px;
+  font-weight: bold;
+  padding-top: 20px;
   width: 100%;
   margin-bottom: 30px;
 `;
@@ -49,12 +61,13 @@ export const Notice = styled.span`
 export const ThirdSection = styled.div`
   background-color: white;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   flex-direction: column;
   flex-wrap: wrap;
   width: 100%;
   padding-bottom: 32px;
   min-height: 100px;
+  padding: 40px; // 상하좌우 안쪽으로 20px만큼 들어감
 `;
 
 export const StepTitle = styled.p`
@@ -96,7 +109,26 @@ export const CompleteTitle = styled.p`
   font-size: 20px;
   font-weight: bold;
   color: #333333;
+  margin-bottom: 20px;
 `;
+
+export const ForthSection = styled.div`
+  background-color: white;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 100%;
+  padding-bottom: 32px;
+  min-height: 100px;
+  padding: 40px; // 상하좌우 안쪽으로 20px만큼 들어감
+`;
+
+export const Complete = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
 export const CompleteImgWrap = styled.div`
   display: flex;
   justify-content: center;
@@ -106,15 +138,37 @@ export const CompleteImg = styled.img`
   height: 140px;
   margin: 4px;
 `;
-export const SaveButton = styled.div`
+
+export const FifthSection = styled.div`
+  background-color: white;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 4px;
+  justify-content: space-around;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 100%;
+  padding-bottom: 32px;
+  min-height: 100px;
+  padding: 40px; // 상하좌우 안쪽으로 20px만큼 들어감
+`;
+export const SaveButton = styled.div`
+  background-color: white;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 100%;
+  padding-bottom: 32px;
+  min-height: 100px;
+  padding: 40px; // 상하좌우 안쪽으로 20px만큼 들어감
 `;
 
-export const CookingTipWrap = styled.div``;
 export const CookingTipP = styled.p`
   font-weight: bold;
+  margin-bottom: 20px;
+  font-size: 20px;
 `;
-export const CookingTipTXT = styled.textarea``;
+export const CookingTipTXT = styled.textarea`
+  font-size: 20px;
+`;
+
+export const Save = styled.button``;

@@ -1,3 +1,13 @@
+export interface Step {
+  stepDesc: string;
+  imgSrc: string;
+}
+
+export interface Ingredient {
+  ingredient: string;
+  quantity: string;
+}
+
 export interface User {
   profileImg: string;
   name: string;
@@ -6,9 +16,20 @@ export interface User {
 }
 
 export interface RecipeData {
-  imgSrc?: string;
-  creator: User;
   title: string;
-  intro: string;
-  viewCount: number;
+  description: string;
+  category: string[];
+  cookingInfo: string[];
+  cookingTip: string;
+  mainImg: {
+    file: File;
+    preview: string;
+  } | null;
+  completedImgs: Array<{
+    file: File;
+    preview: string;
+  } | null>;
+  ingredientList: Ingredient[];
+  stepList: Step[];
+  creator: User;
 }

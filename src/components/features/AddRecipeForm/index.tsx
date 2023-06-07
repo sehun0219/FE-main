@@ -5,10 +5,11 @@ import CookingInfo from "@/components/features/AddRecipeForm/CookingInfoForm";
 import ImgButton from "@/components/features/AddRecipeForm/ImgButton";
 import StepForm from "@/components/features/AddRecipeForm/StepForm";
 import IngredientForm from "@/components/features/IngredientForm";
-import { uploadRecipe } from "../../../apis/recipe";
+import { uploadRecipeImages } from "@/apis/recipe";
 
 import {
   Container,
+  AddRecipeTitle,
   FirstSectionInputWrap,
   FirstSection,
   SecondSection,
@@ -17,12 +18,15 @@ import {
   ThirdSection,
   StepTitle,
   StepExplanation,
+  ForthSection,
+  Complete,
   CompleteTitle,
-  CookingTipWrap,
+  FifthSection,
   CompleteImgWrap,
   CookingTipP,
   CookingTipTXT,
   SaveButton,
+  Save,
 } from "./styled";
 import { useState } from "react";
 
@@ -32,19 +36,29 @@ interface Step {
   id: number;
 }
 
+interface CompletedImg {
+  file: File;
+  preview: string;
+}
+
 const AddRecipeForm = () => {
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   const [category, setCategory] = useState<string[]>([]);
   const [cookingInfo, setCookingInfo] = useState<string[]>([]);
   const [cookingTip, setCookingTip] = useState("");
+
   const [mainImg, setMainImg] = useState<null | {
     file: File;
     preview: string;
   }>(null);
-  const [completedImgs, setCompletedImgs] = useState<
-    Array<{ file: File; preview: string } | null>
-  >([null, null, null, null]);
+
+  const [completedImgs, setCompletedImgs] = useState<(CompletedImg | null)[]>([
+    null,
+    null,
+    null,
+    null,
+  ]);
   const [ingredientList, setIngredientList] = useState([
     {
       ingredient: "",
@@ -104,42 +118,60 @@ const AddRecipeForm = () => {
     ) {
       alert("모든 필드를 채워주세요!");
       return;
-    } else {
-      uploadRecipe(formData);
     }
+    const resData = {
+      title,
+      desc,
+      cookingInfo,
+      cookingTip,
+      category,
+      // stepList,
+      ingredientList,
+    };
+
+    const formData = new FormData();
+
+    formData.append("title", title);
+    formData.append("desc", desc);
+
+    if (mainImg !== null) {
+      formData.append("mainImg", mainImg.file);
+    }
+    formData.append("category", category.join(", "));
+    formData.append("cookingInfo", cookingInfo.join(", "));
+    formData.append("cookingTip", cookingTip);
+    stepList.forEach((step, index) => {
+      formData.append(`stepList[${index}][stepDesc]`, step.stepDesc);
+      formData.append(`stepList[${index}][imgSrc]`, step.imgSrc);
+    });
+
+    ingredientList.forEach((ingredient, index) => {
+      formData.append(
+        `ingredientList[${index}][ingredient]`,
+        ingredient.ingredient
+      );
+
+      formData.append(
+        `ingredientList[${index}][quantity]`,
+        ingredient.quantity
+      );
+    });
+
+    completedImgs.forEach((img, index) => {
+      if (img !== null) {
+        formData.append(`completedImgs[${index}]`, img.file);
+      }
+    });
+    for (const key of formData.keys()) {
+      console.log(key, ":", formData.get(key));
+    }
+
+    uploadRecipeImages(formData);
   };
-
-  const formData = new FormData();
-
-  formData.append("title", title);
-  formData.append("desc", desc);
-  if (mainImg !== null) {
-    formData.append("mainImg", mainImg.file);
-  }
-  formData.append("category", category.join(", "));
-  formData.append("cookingInfo", cookingInfo.join(", "));
-  formData.append("cookingTip", cookingTip);
-
-  stepList.forEach((step, index) => {
-    formData.append(`stepList[${index}][stepDesc]`, step.stepDesc);
-    formData.append(`stepList[${index}][imgSrc]`, step.imgSrc);
-  });
-  ingredientList.forEach((ingredient, index) => {
-    formData.append(
-      `ingredientList[${index}][ingredient]`,
-      ingredient.ingredient
-    );
-    formData.append(`ingredientList[${index}][quantity]`, ingredient.quantity);
-  });
-
-  completedImgs.forEach((img, index) => {
-    if (img !== null) {
-      formData.append(`completedImgs[${index}]`, img.file);
-    }
-  });
 
   return (
     <Container>
+      <AddRecipeTitle>레시피 등록</AddRecipeTitle>
       <FirstSection>
         <FirstSectionInputWrap>
           <PTagForm
@@ -201,30 +233,38 @@ const AddRecipeForm = () => {
           removeStep={removeStep}
           addStep={addStep}
         />
-        <Br></Br>
-
-        <CompleteTitle>요리완성사진</CompleteTitle>
-        <CompleteImgWrap>
-          {completedImgs.map((img, index) => (
-            <ImgButton
-              key={index}
-              imgUrl={img?.preview}
-              onImageUpload={(file) => handleCompletedImageUpload(file, index)}
-            />
-          ))}
-        </CompleteImgWrap>
-        <Br></Br>
-        <CookingTipWrap>
-          <CookingTipP>요리팁</CookingTipP>
-          <CookingTipTXT placeholder="예)고기요리에는 소금보다 설탕을 먼저 넣어야 단맛이 겉돌지 않고 육질이 부드러워요"></CookingTipTXT>
-        </CookingTipWrap>
-
-        <Br></Br>
-        <SaveButton>
-          <button onClick={handleSave}>레시피 업로드하기</button>
-          <button>취소</button>
-        </SaveButton>
       </ThirdSection>
+      <Br></Br>
+      <ForthSection>
+        <Complete>
+          <CompleteTitle>요리완성사진</CompleteTitle>
+          <CompleteImgWrap>
+            {completedImgs.map((img, index) => (
+              <ImgButton
+                key={index}
+                imgUrl={img?.preview}
+                onImageUpload={(file) =>
+                  handleCompletedImageUpload(file, index)
+                }
+              />
+            ))}
+          </CompleteImgWrap>
+        </Complete>
+      </ForthSection>
+      <Br></Br>
+      <FifthSection>
+        <CookingTipP>요리팁</CookingTipP>
+        <CookingTipTXT
+          onChange={(e) => {
+            setCookingTip(e.target.value);
+          }}
+          placeholder="예)고기요리에는 소금보다 설탕을 먼저 넣어야 단맛이 겉돌지 않고 육질이 부드러워요"
+        ></CookingTipTXT>
+      </FifthSection>
+      <Br></Br>
+      <SaveButton>
+        <Save onClick={handleSave}>레시피 업로드하기</Save>
+      </SaveButton>
     </Container>
   );
 };

@@ -1,5 +1,10 @@
 import AddButton from "@/components/common/AddButton";
-
+import {
+  IngredientWarp,
+  IngredientInput,
+  IngredientAddButton,
+  IngredientRow,
+} from "./styled";
 interface Ingredient {
   ingredient: string;
   quantity: string;
@@ -15,40 +20,44 @@ const IngredientForm = ({
   onIngredientList,
 }: IngredientFormProps) => {
   return (
-    <div>
+    <IngredientWarp>
       {ingredientList.map((ingredient, index) => {
         return (
-          <div>
-            <input
-              placeholder="재료"
-              value={ingredient.ingredient}
-              onChange={(e) => {
-                const newIngredientList = [...ingredientList];
-                newIngredientList[index].ingredient = e.target.value;
-                onIngredientList(newIngredientList);
-              }}
-            />
-            <input
-              placeholder="양"
-              value={ingredient.quantity}
-              onChange={(e) => {
-                const newIngredientList = [...ingredientList];
-                newIngredientList[index].quantity = e.target.value;
-                onIngredientList(newIngredientList);
-              }}
-            />
-            {ingredientList.length > 1 && (
-              <button
-                onClick={() => {
-                  onIngredientList(
-                    ingredientList.filter((_, i) => i !== index)
-                  );
+          <IngredientRow>
+            <div>
+              <IngredientInput
+                placeholder="eg. Tomato"
+                value={ingredient.ingredient}
+                onChange={(e) => {
+                  const newIngredientList = [...ingredientList];
+                  newIngredientList[index].ingredient = e.target.value;
+                  onIngredientList(newIngredientList);
                 }}
-              >
-                지우기
-              </button>
-            )}
-          </div>
+              />
+
+              <IngredientInput
+                placeholder="eg. 2 EA"
+                value={ingredient.quantity}
+                onChange={(e) => {
+                  const newIngredientList = [...ingredientList];
+                  newIngredientList[index].quantity = e.target.value;
+                  onIngredientList(newIngredientList);
+                }}
+              />
+
+              {ingredientList.length > 1 && (
+                <IngredientAddButton
+                  onClick={() => {
+                    onIngredientList(
+                      ingredientList.filter((_, i) => i !== index)
+                    );
+                  }}
+                >
+                  x
+                </IngredientAddButton>
+              )}
+            </div>
+          </IngredientRow>
         );
       })}
       <AddButton
@@ -64,7 +73,7 @@ const IngredientForm = ({
       >
         재료추가
       </AddButton>
-    </div>
+    </IngredientWarp>
   );
 };
 
