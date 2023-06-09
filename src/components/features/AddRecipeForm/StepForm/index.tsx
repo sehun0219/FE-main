@@ -3,7 +3,7 @@ import { Step, StepNum, StepText, StepItem, StepAddButton } from "./styled";
 interface Step {
   id: number;
   stepDesc: string;
-  imgSrc: string;
+  imgSrc: string | File;
 }
 
 interface StepFormProps {
@@ -36,7 +36,11 @@ const StepForm = ({
           />
           <ImgButton
             onImageUpload={(file) => handleImageUpload(file, index)}
-            imgUrl={step.imgSrc}
+            imgUrl={
+              typeof step.imgSrc === "string"
+                ? step.imgSrc
+                : URL.createObjectURL(step.imgSrc)
+            }
           />
           {stepList.length > 1 && (
             <button onClick={() => removeStep(step.id)}>X</button>

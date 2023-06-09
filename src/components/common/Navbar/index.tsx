@@ -40,14 +40,11 @@ const Navbar = () => {
 
   return (
     <NavbarContainer>
-      <NavbarLogo>What should I eat</NavbarLogo>
+      <NavbarLogo>
+        <a href="/">What should I eat</a>
+      </NavbarLogo>
       <SearchBar>
-        <SearchBarInput
-          type="text"
-          value={search}
-          onChange={handleSearch}
-          placeholder=" Search.. "
-        />
+        <SearchBarInput type="text" value={search} onChange={handleSearch} />
 
         <button onClick={handleSearchButton}></button>
       </SearchBar>

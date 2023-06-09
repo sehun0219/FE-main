@@ -26,6 +26,11 @@ export const SearchBar = styled.div`
   justify-content: center;
   gap: 16px;
   padding: 5px;
+  input[type="text"]:focus {
+    text-indent: 20px;
+    caret-color: white;
+    text-decoration-color: white;
+  }
 `;
 
 export const SearchBarInput = styled.input`

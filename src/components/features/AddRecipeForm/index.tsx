@@ -6,6 +6,7 @@ import ImgButton from "@/components/features/AddRecipeForm/ImgButton";
 import StepForm from "@/components/features/AddRecipeForm/StepForm";
 import IngredientForm from "@/components/features/IngredientForm";
 import { uploadRecipeImages } from "@/apis/recipe";
+import { UserContext } from "@/store/UserContext";
 
 import {
   Container,
@@ -30,9 +31,11 @@ import {
 } from "./styled";
 import { useState } from "react";
 
+import React, { useContext } from "react";
+
 interface Step {
   stepDesc: string;
-  imgSrc: string;
+  imgSrc: string | File;
   id: number;
 }
 
@@ -108,6 +111,8 @@ const AddRecipeForm = () => {
     setStepList(newStepList);
   };
 
+  const userContextValue = useContext(UserContext);
+  const user = userContextValue?.user;
   const handleSave = async () => {
     if (
       title === "" ||
@@ -116,33 +121,31 @@ const AddRecipeForm = () => {
       stepList.length === 0 ||
       ingredientList.length === 0
     ) {
-      alert("모든 필드를 채워주세요!");
+      alert("Please fill in everything");
       return;
     }
-    const resData = {
-      title,
-      desc,
-      cookingInfo,
-      cookingTip,
-      category,
-      // stepList,
-      ingredientList,
-    };
 
     const formData = new FormData();
 
     formData.append("title", title);
     formData.append("desc", desc);
-
+    if (user?._id) {
+      formData.append("creator", user._id);
+    } else {
+      console.error("User._id is undefined");
+    }
     if (mainImg !== null) {
       formData.append("mainImg", mainImg.file);
     }
     formData.append("category", category.join(", "));
     formData.append("cookingInfo", cookingInfo.join(", "));
     formData.append("cookingTip", cookingTip);
+
     stepList.forEach((step, index) => {
       formData.append(`stepList[${index}][stepDesc]`, step.stepDesc);
-      formData.append(`stepList[${index}][imgSrc]`, step.imgSrc);
+      if (step.imgSrc instanceof File) {
+        formData.append(`stepImages_${index}`, step.imgSrc); // 각 스텝 이미지를 고유한 필드로 보냅니다
+      }
     });
 
     ingredientList.forEach((ingredient, index) => {
@@ -162,6 +165,7 @@ const AddRecipeForm = () => {
         formData.append(`completedImgs[${index}]`, img.file);
       }
     });
+
     for (const key of formData.keys()) {
       console.log(key, ":", formData.get(key));
     }
