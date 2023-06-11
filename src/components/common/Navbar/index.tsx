@@ -1,5 +1,5 @@
 import { useState, MouseEvent, ChangeEvent, useContext } from "react";
-import { Link } from "react-router-dom";
+
 import { UserContext } from "@/store/UserContext";
 
 import {
@@ -13,8 +13,6 @@ import {
 } from "./styled";
 
 const Navbar = () => {
-  const [isDropdownOpen, setDropdownOpen] = useState(false);
-
   const [search, setSearch] = useState("");
   const userContext = useContext(UserContext);
   if (!userContext) {
@@ -31,11 +29,8 @@ const Navbar = () => {
   };
   const handleSearchButton = (e: MouseEvent<HTMLButtonElement>) => {
     // 쿼리만들고 결과값 찾아서 아랫쪽에 뿌려줘야함...
+    e.preventDefault();
     return null;
-  };
-
-  const toggleDropdown = () => {
-    setDropdownOpen(!isDropdownOpen);
   };
 
   return (
