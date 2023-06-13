@@ -10,7 +10,6 @@ export const Container = styled.div`
 export const SideBarMenu = styled.div`
   width: 100%;
   height: 270px;
-
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -28,13 +27,15 @@ export const ShortCutTitle = styled.p`
   font-size: 16px;
   font-weight: bold;
   color: #f1f1f1;
+  font-style: italic;
+  text-decoration: underline;
 `;
 
 export const SingleMeneComp = styled.button`
   width: 80%;
   height: 40px;
-  margin: -20px;
-  border: 1px solid #f1f1f1;
+  margin: -25px;
+  border: none;
   border-radius: 10px;
   font-size: 16px;
   font-weight: 400;
@@ -44,6 +45,7 @@ export const SingleMeneComp = styled.button`
   color: #f1f1f1;
   background-color: transparent;
   cursor: pointer;
+  border: 2px solid #353a48;
 
   :hover {
     background-color: #f1f1f1;
@@ -60,7 +62,7 @@ export const ShortCutMeneComp = styled.button`
   width: 80%;
   height: 40px;
   margin: -6px;
-  border: 1px solid #f1f1f1;
+  border: none;
   border-radius: 10px;
   font-size: 16px;
   font-weight: 400;
@@ -70,7 +72,7 @@ export const ShortCutMeneComp = styled.button`
   color: #f1f1f1;
   background-color: transparent;
   cursor: pointer;
-
+  border: 2px solid #353a48;
   :hover {
     background-color: #f1f1f1;
     color: #000;
@@ -85,7 +87,7 @@ export const ShortCutMeneComp = styled.button`
 export const FooterBox = styled.div`
   width: 90%;
   height: 300px;
-  border: 1px solid #f1f1f1;
+  border: none;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -125,7 +127,8 @@ export const GitLink = styled.a`
 
 export const Br = styled.div`
   position: relative;
-  left: 25px;
+  left: 27px;
+  top: -10px;
   width: 200px;
   height: 1px;
   border: 2px solid #f1f1f1;

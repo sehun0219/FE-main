@@ -10,17 +10,20 @@ export const Top = styled.div`
   height: 40px;
   padding-top: 20px;
   font-size: 18px;
-  font-weight: 500;
+  font-weight: 600;
   padding-left: 68px;
-  color: #f1f1f1;
+  color: #4d5669;
+  position: relative;
+  left: 24px;
 `;
 export const MainBody = styled.div`
   width: 100%;
   height: calc(100% - 140px);
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 10px;
+  margin-left: 90px;
 `;
 
 export const PageNationWrap = styled.div`

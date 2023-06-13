@@ -35,9 +35,10 @@ export interface RecipeData {
 }
 
 export interface CardData {
-  img: string;
+  thumbNailImg: string;
   title: string;
   id: string;
   viewCount: number;
   date: string;
+  avatarImg: string;
 }

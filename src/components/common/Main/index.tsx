@@ -38,7 +38,9 @@ const Main = () => {
 
   return (
     <Container>
-      <Top>{DummyData.length}개의 레시피가 있습니다.</Top>
+      <Top>
+        An assortment of {DummyData.length} exquisite recipes awaits you
+      </Top>
       <MainBody>
         {DummyData.filter(
           (_, i) => 8 * (pagePos - 1) <= i && i < 8 * pagePos

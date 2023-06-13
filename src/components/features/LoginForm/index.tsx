@@ -9,8 +9,6 @@ import {
 } from "./styled";
 import FormInput from "@/components/common/FormInput";
 
-// http://localhost:8080/user/login
-
 const LoginForm = () => {
   const {
     handleSubmit,

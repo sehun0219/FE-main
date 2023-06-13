@@ -17,9 +17,13 @@ interface RecipeCardProps {
 }
 
 const RecipeCard = ({ data }: RecipeCardProps) => {
-  const [thumbNail, setThumbNail] = useState(data.img || "");
+  const [thumbNail, setThumbNail] = useState(data.thumbNailImg || "");
   useEffect(() => {
-    setThumbNail(data.img || "");
+    setThumbNail(data.thumbNailImg || "");
+  }, [data]);
+  const [avatarImg, setAvatarImg] = useState(data.avatarImg);
+  useEffect(() => {
+    setAvatarImg(data.avatarImg || "");
   }, [data]);
 
   return (
@@ -27,7 +31,7 @@ const RecipeCard = ({ data }: RecipeCardProps) => {
       <ThumbNailImg src={thumbNail} />
       <WarpImgAvatarAndDetails>
         <ThumbNailDetails>
-          <ThumbNailAvatar />
+          <ThumbNailAvatar src={avatarImg} />
         </ThumbNailDetails>
         <DetailsContent>
           <RecipeTitle>{data.title}</RecipeTitle>

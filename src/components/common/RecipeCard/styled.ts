@@ -66,12 +66,11 @@ export const UploadTime = styled.div`
   font-size: 12px;
   color: orange;
 `;
-export const ThumbNailAvatar = styled.div`
+export const ThumbNailAvatar = styled.img`
   width: 35px;
   height: 35px;
   margin-right: 20px;
   border-radius: 50%;
-  background: url("public/png-image_338646.jpeg") no-repeat center/cover;
 `;
 export const WarpImgAvatarAndDetails = styled.div`
   display: flex;
