@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const Container = styled.div`
   width: calc(100% - 250px);
   height: 100%;
-  border: 1px solid blue;
 `;
 
 export const Top = styled.div`
@@ -11,9 +10,9 @@ export const Top = styled.div`
   height: 40px;
   padding-top: 20px;
   font-size: 18px;
-  font-weight: bold;
+  font-weight: 500;
   padding-left: 68px;
-  color: #ffffff;
+  color: #f1f1f1;
 `;
 export const MainBody = styled.div`
   width: 100%;

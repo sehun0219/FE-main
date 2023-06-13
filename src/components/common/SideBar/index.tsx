@@ -7,12 +7,12 @@ import {
   ShortCutMeneComp,
   ShortCutTitle,
   Br,
+  Footer,
+  Text,
+  GitLink,
 } from "./styled";
 
-import Footer from "../Footer/Footer";
-
 const Sidebar = () => {
-  const footer = Footer();
   return (
     <Container>
       <SideBarMenu>
@@ -28,7 +28,22 @@ const Sidebar = () => {
         <ShortCutMeneComp>Drink</ShortCutMeneComp>
         <ShortCutMeneComp>Snack</ShortCutMeneComp>
       </ShortCut>
-      <FooterBox>{footer}</FooterBox>
+      <FooterBox>
+        <Footer>
+          <Text>
+            {`© 2023 All rights reserved. 
+            This website is maintained by Cayde Kim.
+            Visit the GitHub repository at`}
+          </Text>
+          <GitLink
+            href="https://github.com/sehun0219"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            https://github.com/sehun0219
+          </GitLink>
+        </Footer>
+      </FooterBox>
     </Container>
   );
 };

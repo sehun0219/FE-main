@@ -39,7 +39,7 @@ export const ThumbNailDetails = styled.div`
   flex-direction: column;
   align-items: flex-start;
   background-color: #23272f;
-  color: #ffffff;
+  color: #f1f1f1;
 `;
 
 export const DetailsContent = styled.div`
@@ -50,15 +50,17 @@ export const DetailsContent = styled.div`
 export const RecipeTitle = styled.div`
   font-size: 20px;
   font-weight: bold;
-  color: #ffffff;
+  color: #f1f1f1;
 `;
 export const UserId = styled.div`
   font-size: 14px;
-  color: #c0c0c0;
+  color: #f1f1f1;
+  font-weight: 600;
 `;
 export const ViewCount = styled.div`
   font-size: 12px;
-  color: orange;
+  color: rgb(250 204 21);
+  font-weight: 400;
 `;
 export const UploadTime = styled.div`
   font-size: 12px;

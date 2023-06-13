@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const Container = styled.div`
   width: 250px;
   height: 100%;
-  border: 1px solid red;
   display: flex;
   flex-direction: column;
 `;
@@ -86,7 +85,7 @@ export const ShortCutMeneComp = styled.button`
 export const FooterBox = styled.div`
   width: 90%;
   height: 300px;
-  border: 2px solid #f1f1f1;
+  border: 1px solid #f1f1f1;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -94,10 +93,34 @@ export const FooterBox = styled.div`
   margin-bottom: 12px;
   margin-left: 12px;
   padding: 20px;
-
+  background-color: #23272f;
   color: #f1f1f1;
-  font-size: 14px;
+  font-size: 16px;
   text-align: center;
+`;
+
+export const Footer = styled.div`
+  max-width: 80%;
+`;
+
+export const Text = styled.p`
+  margin-bottom: 30px; // 변경: 텍스트간 여백
+  color: #f1f1f1; // 변경: 글자 색상
+  font-size: 14px;
+  line-height: 1.5;
+  font-weight: 400;
+`;
+
+export const GitLink = styled.a`
+  position: relative;
+  left: -26px;
+  bottom: -10px;
+  color: #61dafb;
+  text-decoration: none;
+  font-weight: 400;
+  &:hover {
+    color: #f1f1f1;
+  }
 `;
 
 export const Br = styled.div`

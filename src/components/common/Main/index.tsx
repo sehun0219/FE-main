@@ -1,5 +1,7 @@
+import { useEffect, useState } from "react";
 import RecipeCard from "../RecipeCard";
-
+import { Link } from "react-router-dom";
+import DummyData from "@/store/DummyData";
 import {
   Container,
   Top,
@@ -8,97 +10,50 @@ import {
   PageNation,
   PageNationButton,
 } from "./styled";
-import { CardData } from "@/interface/recipe";
 
 const Main = () => {
-  const dummyData: CardData[] = [
-    {
-      img: "public/indianFood-image_127425-18.avif",
-      title: "Indian style chicken",
-      id: "wjs2282",
-      viewCount: 10,
-      date: "2023-06-10",
-    },
-    {
-      img: "public/bibimbab.jpeg",
-      title: "Korean Bibimbap that's easy to follow",
-      id: "wjs2282",
-      viewCount: 10,
-      date: "2023-06-10",
-    },
-    {
-      img: "public/bugers.jpeg",
-      title: "New York Style Homemade Shake Shack Burger",
-      id: "wjs2282",
-      viewCount: 10,
-      date: "2023-06-10",
-    },
-    {
-      img: "public/panCake.jpeg",
-      title: "Pancake that my dad made for me every Sunday",
-      id: "wjs2282",
-      viewCount: 10,
-      date: "2023-06-10",
-    },
-    {
-      img: "public/pork.webp",
-      title:
-        "A must-win date recipe! Homemade salmon steak with a restaurant vibe",
-      id: "wjs2282",
-      viewCount: 10,
-      date: "2023-06-10",
-    },
-    {
-      img: "public/salad.jpeg",
-      title: "Salad Recipe of Memories",
-      id: "wjs2282",
-      viewCount: 10,
-      date: "2023-06-10",
-    },
-    {
-      img: "public/cheeseBuger.avif",
-      title: "레시피 제목",
-      id: "wjs2282",
-      viewCount: 10,
-      date: "2023-06-10",
-    },
-    {
-      img: "public/cake.jpeg",
-      title: "레시피 제목",
-      id: "wjs2282",
-      viewCount: 10,
-      date: "2023-06-10",
-    },
-    {
-      img: "../../public/11.png",
-      title: "레시피 제목",
-      id: "wjs2282",
-      viewCount: 10,
-      date: "2023-06-10",
-    },
-    {
-      img: "../../public/11.png",
-      title: "레시피 제목",
-      id: "wjs2282",
-      viewCount: 10,
-      date: "2023-06-10",
-    },
-  ];
+  const [pagePos, setPagePos] = useState<number>(1);
+  const [pageNation, setPageNation] = useState<number[]>([]);
+
+  useEffect(() => {
+    let temp;
+    DummyData.length % 8 == 0
+      ? (temp = [...Array(Math.floor(DummyData.length / 8))])
+      : (temp = [...Array(Math.floor(DummyData.length / 8 + 1))]);
+
+    temp = temp.map((_, index) => index + 1);
+    temp.push(-1);
+    setPageNation(temp);
+  }, []);
+
+  const pagePosEvent = (i: number) => {
+    if (i == -1) {
+      if (pagePos + 1 < DummyData.length / 8 + 1.01) {
+        setPagePos(pagePos + 1);
+      }
+    } else {
+      setPagePos(i);
+    }
+  };
 
   return (
     <Container>
-      <Top>{10}개의 레시피가 있습니다.</Top>
+      <Top>{DummyData.length}개의 레시피가 있습니다.</Top>
       <MainBody>
-        {dummyData
-          .filter((_, i) => i < 8)
-          .map((item, i) => (
+        {DummyData.filter(
+          (_, i) => 8 * (pagePos - 1) <= i && i < 8 * pagePos
+        ).map((item, i) => (
+          <Link to="/detail">
             <RecipeCard key={i} data={item} />
-          ))}
+          </Link>
+        ))}
       </MainBody>
       <PageNationWrap>
         <PageNation>
-          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, ">"].map((i) => (
-            <PageNationButton>{i}</PageNationButton>
+          {pageNation.map((i) => (
+            <PageNationButton onClick={() => pagePosEvent(i)}>
+              {i == -1 ? ">" : i}
+            </PageNationButton>
           ))}
         </PageNation>
       </PageNationWrap>
