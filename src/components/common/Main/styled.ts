@@ -6,7 +6,7 @@ export const Container = styled.div`
 `;
 
 export const Top = styled.div`
-  width: 100%;
+  width: 90%;
   height: 40px;
   padding-top: 20px;
   font-size: 18px;
@@ -14,16 +14,16 @@ export const Top = styled.div`
   padding-left: 68px;
   color: #4d5669;
   position: relative;
-  left: 24px;
+  left: -16px;
 `;
 export const MainBody = styled.div`
-  width: 100%;
-  height: calc(100% - 140px);
+  width: 92%;
+  height: calc(100% - 125px);
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
   gap: 10px;
-  margin-left: 90px;
+  margin-left: 50px;
 `;
 
 export const PageNationWrap = styled.div`
@@ -45,16 +45,18 @@ export const PageNation = styled.div`
   gap: 8px;
 `;
 
-export const PageNationButton = styled.button`
+export const PageNationButton = styled.button<{ isActive: boolean }>`
   width: 40px;
   height: 40px;
-  background-color: #4d5669;
   font-weight: bold;
-  color: #ffffff;
+  color: #f6f7f9;
   border: none;
   box-shadow: none;
+  background-color: ${(props) => (props.isActive ? "#5ED4F4" : "#343a46")};
   cursor: pointer;
   &:hover {
-    background-color: #627097;
+    background-color: #5ed4f4;
   }
+  transition: background-color 0.2s;
+  border-radius: 4px;
 `;

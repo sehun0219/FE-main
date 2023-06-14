@@ -5,7 +5,6 @@ const Footer = () => {
     <Container>
       <Text>
         © 2023 All rights reserved. This website is maintained by Cayde Kim.
-        Visit the GitHub repository at{" "}
         <GitLink
           href="https://github.com/sehun0219"
           target="_blank"

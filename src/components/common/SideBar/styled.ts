@@ -46,7 +46,7 @@ export const SingleMeneComp = styled.button`
   background-color: transparent;
   cursor: pointer;
   border: 2px solid #353a48;
-
+  transition: background-color 0.2s ease-in-out;
   :hover {
     background-color: #f1f1f1;
     color: #000;
@@ -71,6 +71,7 @@ export const ShortCutMeneComp = styled.button`
   align-items: center;
   color: #f1f1f1;
   background-color: transparent;
+  transition: background-color 0.2s ease-in-out;
   cursor: pointer;
   border: 2px solid #353a48;
   :hover {

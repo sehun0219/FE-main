@@ -1,3 +1,4 @@
+import { AvatarImg } from "./../components/features/DetailForm/styled";
 export interface User {
   email: string;
   name: string;
@@ -11,6 +12,7 @@ export interface SignUpData {
   name: string;
   password: string;
   email: string;
+  avatarImg: string;
 }
 
 export interface LoginData {

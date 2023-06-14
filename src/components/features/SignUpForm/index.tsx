@@ -1,90 +1,142 @@
 import {
+  PageWrapper,
   FormContainer,
-  FormTitle,
   SubmitButton,
   PasswordHint,
-  Exist,
+  LinkToLogin,
+  LogoImg,
+  GoogleLogin,
+  BrWrap,
+  Br,
+  PasswordHintWrap,
+  AvatarResister,
+  Avatar,
+  AvatarHiddenBox,
 } from "./styled";
 
 import FormInput from "@/components/common/FormInput";
-import { ChangeEvent, FormEvent, useContext, useState } from "react";
+import Footer from "@/components/common/Footer";
+import { ChangeEvent, FormEvent, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { postUserSignUp } from "@/apis/user";
 import { UserContext } from "@/store/UserContext";
 
-// http://localhost:8080/user/sing-up
 const SignUpForm = () => {
   const navigate = useNavigate();
   const [name, setName] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [email, setEmail] = useState<string>("");
-  const [isPasswordValid, setIsPasswordValid] = useState(false);
-  const passWordHint = `Your password should be at least 8 characters long and include a combination of letters, numbers, and special characters.`;
+  const [isPasswordValid, setIsPasswordValid] = useState<boolean>(false);
+  const [avatarImg, setAvatarImg] = useState<string>(
+    "public/Avatar/Avatar.png"
+  );
+
+  // 물어봐야할것같다..
+  const [avatarPreview, setAvatarPreview] = useState<string | null>(
+    "public/Avatar/Avatar.png"
+  );
+
+  const passWordHint = `For password,least 8 characters include a numbers, and special characters`;
+
   const userContext = useContext(UserContext);
   const handleEmail = (e: ChangeEvent<HTMLInputElement>) => {
     const email = e.target.value;
     setEmail(email);
   };
-
-  // 비번 유효성검사
   const isValidPassword = (password: string): boolean => {
     const passwordRegex =
       /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/;
     return passwordRegex.test(password);
   };
-  // name이 바뀔때 입력된 값으로 name을 바꿔줌
   const handleChangeName = (e: ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value);
   };
-  // 비번이 바뀔때 비번을 바꿔줌, 유효성검사도함
   const handleChangePassword = (e: ChangeEvent<HTMLInputElement>) => {
     const password = e.target.value;
     setPassword(password);
-    setIsPasswordValid(isValidPassword(password)); // isValidPassword는 비밀번호 유효성 검사 함수
+    setIsPasswordValid(isValidPassword(password));
   };
-  // 입력이되면 디폴트로 유지, 백앤드로 sign up data를 보냄,
+  const handleAvatarUpload = (e: ChangeEvent<HTMLInputElement>) => {
+    const avatar = e.target.files?.[0];
+    if (avatar) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setAvatarPreview(reader.result as string);
+      };
+      reader.readAsDataURL(avatar);
+    }
+  };
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     try {
       e.preventDefault();
-      const data = await postUserSignUp({ name, password, email });
+      const data = await postUserSignUp({
+        name,
+        password,
+        email,
+        avatarImg,
+      });
       if (!data) throw new Error("Login failed");
       userContext?.login(data);
       alert("Login successful");
       navigate("/");
     } catch (err: any) {
       alert(`${err.message}`);
-      console.error(err);
     }
   };
-  return (
-    <FormContainer onSubmit={handleSubmit}>
-      <FormTitle>Sign Up</FormTitle>
-      <FormInput
-        value={name}
-        type="text"
-        placeholder="Name"
-        onChange={handleChangeName}
-      />
 
-      <FormInput
-        value={email}
-        type="text"
-        placeholder="Email"
-        onChange={handleEmail}
-      />
-      <FormInput
-        value={password}
-        type="password"
-        placeholder="Password"
-        onChange={handleChangePassword}
-      />
-      {!isPasswordValid && <PasswordHint>{passWordHint}</PasswordHint>}
-      <SubmitButton type="submit">Sign Up</SubmitButton>
-      <Exist>
-        {" "}
-        <a href="/login"> 이미 계정이 있나요? </a>{" "}
-      </Exist>
-    </FormContainer>
+  return (
+    <PageWrapper>
+      <FormContainer onSubmit={handleSubmit}>
+        <LogoImg></LogoImg>
+        <GoogleLogin>Login by Google</GoogleLogin>
+        <BrWrap>
+          <Br></Br>
+          Or
+          <Br></Br>
+        </BrWrap>
+        <FormInput
+          value={email}
+          type="text"
+          placeholder="Email"
+          onChange={handleEmail}
+        />
+        <FormInput
+          value={name}
+          type="text"
+          placeholder="Nick name"
+          onChange={handleChangeName}
+        />
+        <FormInput
+          value={password}
+          type="password"
+          placeholder="Password"
+          onChange={handleChangePassword}
+        />
+        <PasswordHintWrap>
+          {!isPasswordValid && <PasswordHint>{passWordHint}</PasswordHint>}
+        </PasswordHintWrap>
+        <AvatarResister>
+          <input
+            type="file"
+            accept="image/*"
+            id="avatarUpload"
+            style={{ display: "none" }}
+            onChange={handleAvatarUpload}
+          />
+          <label htmlFor="avatarUpload">
+            <AvatarHiddenBox>
+              <Avatar
+                src={avatarPreview || "public/Avatar/Avatar.png"}
+                alt="Avatar"
+              ></Avatar>
+            </AvatarHiddenBox>
+          </label>
+        </AvatarResister>
+        <SubmitButton type="submit">Sign Up</SubmitButton>
+        <LinkToLogin to="/login">Do you already have an account?</LinkToLogin>
+      </FormContainer>
+      <Footer></Footer>
+    </PageWrapper>
   );
 };
 

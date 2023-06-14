@@ -13,10 +13,10 @@ export const Top = styled.div`
   font-size: 18px;
   font-weight: bold;
   padding-left: 120px;
-  color: #ffffff;
+  color: #f6f7f9;
 `;
 export const CardWrap = styled.div`
-  width: 360px;
+  width: 290px;
   height: 300px;
   display: flex;
   flex-direction: column;
@@ -39,28 +39,36 @@ export const ThumbNailDetails = styled.div`
   flex-direction: column;
   align-items: flex-start;
   background-color: #23272f;
-  color: #f1f1f1;
+  color: #f6f7f9;
 `;
 
 export const DetailsContent = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
+  height: 100px;
 `;
 
 export const RecipeTitle = styled.div`
-  font-size: 20px;
-  font-weight: bold;
-  color: #f1f1f1;
+  font-size: 16px;
+  font-weight: 700;
+  color: #f6f7f9;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 export const UserId = styled.div`
   font-size: 14px;
-  color: #f1f1f1;
+  color: #f6f7f9;
   font-weight: 600;
 `;
 export const ViewCount = styled.div`
   font-size: 12px;
   color: rgb(250 204 21);
   font-weight: 400;
+  margin: -12px 0px 0px 0px;
 `;
 export const UploadTime = styled.div`
   font-size: 12px;
@@ -69,8 +77,10 @@ export const UploadTime = styled.div`
 export const ThumbNailAvatar = styled.img`
   width: 35px;
   height: 35px;
-  margin-right: 20px;
+  margin-right: 10px;
   border-radius: 50%;
+  margin-top: 12px;
+  margin-left: 2px;
 `;
 export const WarpImgAvatarAndDetails = styled.div`
   display: flex;

@@ -89,7 +89,7 @@ export const ButtonWrap = styled.div`
 
 export const StyledLinkSignUp = styled(Link)`
   width: 100px;
-  height: 80%;
+  height: 70%;
   border-radius: 1em;
   background-color: #293644;
   font-size: 16px;
@@ -105,7 +105,7 @@ export const StyledLinkSignUp = styled(Link)`
 
 export const StyledLogin = styled(Link)`
   width: 100px;
-  height: 80%;
+  height: 70%;
   border: 1px solid red;
   border-radius: 1em;
   background-color: #293644;

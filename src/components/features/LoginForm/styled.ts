@@ -1,5 +1,11 @@
 import styled from "styled-components";
 
+export const PageWrapper = styled.div`
+  border: 2px solid #f1f112;
+  display: flex;
+  justify-content: center;
+`;
+
 export const FormContainer = styled.form`
   display: grid;
   gap: 1em;

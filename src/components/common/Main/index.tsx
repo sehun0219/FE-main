@@ -17,9 +17,9 @@ const Main = () => {
 
   useEffect(() => {
     let temp;
-    DummyData.length % 8 == 0
-      ? (temp = [...Array(Math.floor(DummyData.length / 8))])
-      : (temp = [...Array(Math.floor(DummyData.length / 8 + 1))]);
+    DummyData.length % 10 == 0
+      ? (temp = [...Array(Math.floor(DummyData.length / 10))])
+      : (temp = [...Array(Math.floor(DummyData.length / 10 + 1))]);
 
     temp = temp.map((_, index) => index + 1);
     temp.push(-1);
@@ -27,8 +27,8 @@ const Main = () => {
   }, []);
 
   const pagePosEvent = (i: number) => {
-    if (i == -1) {
-      if (pagePos + 1 < DummyData.length / 8 + 1.01) {
+    if (i === -1) {
+      if (pagePos + 1 < DummyData.length / 10 + 1.01) {
         setPagePos(pagePos + 1);
       }
     } else {
@@ -43,7 +43,7 @@ const Main = () => {
       </Top>
       <MainBody>
         {DummyData.filter(
-          (_, i) => 8 * (pagePos - 1) <= i && i < 8 * pagePos
+          (_, i) => 10 * (pagePos - 1) <= i && i < 10 * pagePos
         ).map((item, i) => (
           <Link to="/detail">
             <RecipeCard key={i} data={item} />
@@ -53,7 +53,11 @@ const Main = () => {
       <PageNationWrap>
         <PageNation>
           {pageNation.map((i) => (
-            <PageNationButton onClick={() => pagePosEvent(i)}>
+            <PageNationButton
+              key={i}
+              isActive={pagePos === i}
+              onClick={() => pagePosEvent(i)}
+            >
               {i == -1 ? ">" : i}
             </PageNationButton>
           ))}
