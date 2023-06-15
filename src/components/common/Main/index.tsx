@@ -14,12 +14,11 @@ import {
 const Main = () => {
   const [pagePos, setPagePos] = useState<number>(1);
   const [pageNation, setPageNation] = useState<number[]>([]);
-
   useEffect(() => {
     let temp;
-    DummyData.length % 10 == 0
-      ? (temp = [...Array(Math.floor(DummyData.length / 10))])
-      : (temp = [...Array(Math.floor(DummyData.length / 10 + 1))]);
+    DummyData.length % 15 == 0
+      ? (temp = [...Array(Math.floor(DummyData.length / 15))])
+      : (temp = [...Array(Math.floor(DummyData.length / 15 + 1))]);
 
     temp = temp.map((_, index) => index + 1);
     temp.push(-1);
@@ -28,7 +27,7 @@ const Main = () => {
 
   const pagePosEvent = (i: number) => {
     if (i === -1) {
-      if (pagePos + 1 < DummyData.length / 10 + 1.01) {
+      if (pagePos + 1 < DummyData.length / 15 + 1.01) {
         setPagePos(pagePos + 1);
       }
     } else {
@@ -43,7 +42,7 @@ const Main = () => {
       </Top>
       <MainBody>
         {DummyData.filter(
-          (_, i) => 10 * (pagePos - 1) <= i && i < 10 * pagePos
+          (_, i) => 15 * (pagePos - 1) <= i && i < 15 * pagePos
         ).map((item, i) => (
           <Link to="/detail">
             <RecipeCard key={i} data={item} />

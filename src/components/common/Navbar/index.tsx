@@ -16,9 +16,16 @@ import {
   WelcomeBox,
   WelcomeText,
   Logout,
+  ToggleBox,
+  TextBox,
+  Line,
 } from "./styled";
 
 const Navbar = () => {
+  const [isSidebarVisible, setSidebarVisible] = useState<boolean>(true);
+  const toggleSidebar = () => {
+    setSidebarVisible(!isSidebarVisible);
+  };
   const [search, setSearch] = useState("");
 
   const userContext = useContext(UserContext);
@@ -45,9 +52,14 @@ const Navbar = () => {
 
   return (
     <NavbarContainer>
+      <ToggleBox onClick={toggleSidebar}>
+        <Line />
+        <Line />
+        <Line />
+      </ToggleBox>
       <LogoWrap href="/">
-        <LogoIcon src="public/Logo/Logo2.png"></LogoIcon>
-        What should I eat
+        <LogoIcon src="public/Logo/Logo.png"></LogoIcon>
+        <TextBox>What should I eat</TextBox>
       </LogoWrap>
       <SearchWrap>
         <SearchBar type="text" value={search} onChange={handleSearch} />

@@ -27,9 +27,7 @@ const SignUpForm = () => {
   const [password, setPassword] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [isPasswordValid, setIsPasswordValid] = useState<boolean>(false);
-  const [avatarImg, setAvatarImg] = useState<string>(
-    "public/Avatar/Avatar.png"
-  );
+  const [avatarImg, setAvatarImg] = useState<File>();
 
   // 물어봐야할것같다..
   const [avatarPreview, setAvatarPreview] = useState<string | null>(
@@ -61,6 +59,7 @@ const SignUpForm = () => {
     if (avatar) {
       const reader = new FileReader();
       reader.onloadend = () => {
+        setAvatarImg(avatar);
         setAvatarPreview(reader.result as string);
       };
       reader.readAsDataURL(avatar);
@@ -69,12 +68,12 @@ const SignUpForm = () => {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     try {
       e.preventDefault();
-      const data = await postUserSignUp({
-        name,
-        password,
-        email,
-        avatarImg,
-      });
+      const temp = new FormData();
+      temp.append("email", email);
+      temp.append("name", name);
+      temp.append("password", password);
+      temp.append("avatarImg", avatarImg ? avatarImg : "");
+      const data = await postUserSignUp(temp);
       if (!data) throw new Error("Login failed");
       userContext?.login(data);
       alert("Login successful");

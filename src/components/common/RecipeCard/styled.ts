@@ -1,11 +1,5 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
-  width: calc(100% - 250px);
-  height: 100%;
-  border: 1px solid blue;
-`;
-
 export const Top = styled.div`
   width: 100%;
   height: 100px;
@@ -58,6 +52,7 @@ export const RecipeTitle = styled.div`
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
+  font-family: Arial, Helvetica, sans-serif;
 `;
 export const UserId = styled.div`
   font-size: 14px;

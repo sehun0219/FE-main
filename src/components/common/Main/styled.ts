@@ -18,7 +18,6 @@ export const Top = styled.div`
 `;
 export const MainBody = styled.div`
   width: 92%;
-  height: calc(100% - 125px);
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
@@ -27,8 +26,8 @@ export const MainBody = styled.div`
 `;
 
 export const PageNationWrap = styled.div`
-  width: calc(100% - 60px);
-  height: 100px;
+  width: 95%;
+  height: 50px;
   margin-left: 30px;
   margin-right: 30px;
   border-top: 1px solid white;

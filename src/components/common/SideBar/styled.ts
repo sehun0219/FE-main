@@ -2,9 +2,10 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   width: 250px;
-  height: 100%;
+
   display: flex;
   flex-direction: column;
+  border: 1px solid red;
 `;
 
 export const SideBarMenu = styled.div`

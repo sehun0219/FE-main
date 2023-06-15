@@ -6,7 +6,7 @@ import Sidebar from "../components/common/SideBar";
 
 const Container = styled.div`
   width: 100%;
-  height: 90vh;
+  min-height: 90vh;
   display: flex;
 `;
 

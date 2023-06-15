@@ -3,21 +3,41 @@ import { Link } from "react-router-dom";
 
 export const NavbarContainer = styled.div`
   display: flex;
+  align-items: center;
   justify-content: space-between;
   background-color: #23272f;
-  height: 65px;
+  height: 60px;
 `;
-export const LogoIcon = styled.img`
-  width: 18%;
-  height: 55%;
-  transform: rotate(10deg);
+export const ToggleBox = styled.button`
+  width: 36px;
+  height: 36px;
+  border: 1px solid #23272f;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-evenly;
+  background-color: #23272f;
+  margin-left: 25px;
+  cursor: pointer;
+  &:hover {
+    background-color: #21a1c1;
+    border-radius: 50%;
+  }
+  transition: background-color 0.1s;
 `;
+export const Line = styled.div`
+  width: 100%;
+  height: 1%;
+  border: 2px solid #f6f7f9;
+`;
+
 export const LogoWrap = styled.a`
-  width: 240px;
+  width: 210px;
   height: 100%;
-  position: relative;
-  left: -0px;
-  color: #f1f1f1;
+  position: absolute;
+  left: 5%;
+  color: #f6f7f9;
   font-size: 20px;
   font-weight: bold;
   display: flex;
@@ -26,7 +46,21 @@ export const LogoWrap = styled.a`
   gap: 4px;
 `;
 
+export const TextBox = styled.p`
+  width: 100%;
+  height: 30%;
+  padding-top: 4px;
+  margin-left: 4px;
+  display: flex;
+  align-items: center;
+`;
+export const LogoIcon = styled.img`
+  width: 18%;
+  height: 4%;
+`;
+
 export const SearchWrap = styled.div`
+  width: 48%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -37,7 +71,7 @@ export const SearchWrap = styled.div`
 export const NavbarLogo = styled.p``;
 
 export const SearchBar = styled.input`
-  width: 750px;
+  width: 80%;
   height: 40px;
   border-radius: 50px;
   background-color: #353a48;
@@ -49,28 +83,30 @@ export const SearchBar = styled.input`
   &:focus {
     outline: 2px solid #21a1c1;
   }
+  position: relative;
+  left: 10%;
 `;
 
 export const CancelButton = styled.button`
-  width: 25px;
-  height: 25px;
-  border-radius: 1rem;
+  width: 2%;
+  height: 3%;
+  border-radius: 40%;
   background-color: #23272f;
   border: none;
-  position: relative;
-  left: -90px;
+  position: absolute;
+  left: 63%;
   color: #f1f1f1;
   cursor: pointer;
 `;
 
 export const SearchButton = styled.button`
-  width: 60px;
-  height: 40px;
-  border-radius: 50rem;
+  width: 2%;
+  height: 3%;
+  border-radius: 40%;
   background-color: #23272f;
   border: none;
-  position: relative;
-  left: -85px;
+  position: absolute;
+  left: 66%;
   cursor: pointer;
 `;
 
@@ -133,9 +169,8 @@ export const WelcomeBox = styled.div`
 export const WelcomeText = styled.p`
   width: 100%;
   height: 100%;
-  font-size: 300;
   color: #21a1c1;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 400;
 `;
 

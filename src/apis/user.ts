@@ -1,5 +1,5 @@
 import axios from "axios";
-import { LoginData, User, SignUpData } from "@/interface/user";
+import { LoginData, User } from "@/interface/user";
 
 export const postUserLogin = async (loginData: LoginData) => {
   try {
@@ -16,13 +16,16 @@ export const postUserLogin = async (loginData: LoginData) => {
   }
 };
 
-export const postUserSignUp = async (signUpData: SignUpData) => {
+export const postUserSignUp = async (signUpData: FormData) => {
   try {
     const res = await axios.post<{
       user: User;
       token: string;
-    }>("http://localhost:8080/user/sign-up", signUpData);
-    // 추가적인 작업: 응답 처리, 로그인 페이지로 리디렉션
+    }>("http://localhost:8080/user/sign-up", signUpData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
     if (res.status === 200) {
       return res.data;
     }
