@@ -74,6 +74,7 @@ const GlobalStyle = createGlobalStyle`
     align-items: center; /* 수직 중앙 정렬 */
     justify-content: space-between; /* 수평 방향으로 요소들 사이에 동일한 간격 배치 */
   }
+  
 `;
 
 const App = () => {

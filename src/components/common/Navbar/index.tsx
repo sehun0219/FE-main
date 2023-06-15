@@ -22,12 +22,11 @@ import {
 } from "./styled";
 
 const Navbar = () => {
-  const [isSidebarVisible, setSidebarVisible] = useState<boolean>(true);
+  const [search, setSearch] = useState("");
+  const [isSidebarVisible, setSidebarVisible] = useState(true);
   const toggleSidebar = () => {
     setSidebarVisible(!isSidebarVisible);
   };
-  const [search, setSearch] = useState("");
-
   const userContext = useContext(UserContext);
   if (!userContext) {
     return <div>Loading...</div>;

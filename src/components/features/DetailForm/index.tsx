@@ -22,7 +22,7 @@ import {
   SideRecipeTitle,
   IngredientsTitle,
   IngredientsDetailWrap,
-  IngredientsDetailTitle,
+  CoreItem,
   ContentsBox,
   CookingStepWrap,
   CookingStepTitle,
@@ -30,39 +30,76 @@ import {
   StepNum,
   StepDesc,
   StepImg,
-  Contents,
+  Items,
   CardTitle,
   CardAvatar,
   TextWrap,
   GapBox,
+  CoreText,
 } from "./styled";
-
+import { useEffect, useState } from "react";
+import DummyRecipeData from "@/store/DummyRecipeData";
+import { RecipeData } from "@/interface/recipe";
 const DetailForm = () => {
+  const [recipeData, setRecipeData] = useState<RecipeData>({
+    mainImg: "",
+    title: "",
+    category: "",
+    description: "",
+    cookingInfo: {
+      servingSize: "",
+      cookingTime: "",
+      difficulty: "",
+      type: "",
+    },
+    coreItems: [],
+    ingredient: [],
+    completedImg: [],
+    cookingStep: [],
+    creator: {
+      avatarImg: "",
+      name: "",
+    },
+  });
+
+  useEffect(() => {
+    setRecipeData(DummyRecipeData[0]);
+  }, []);
+
   return (
     <PageWrapper>
       <MainContentWrap>
         <MainWrap>
-          <MainImg></MainImg>
-          <AvatarImg></AvatarImg>
-          <UserId></UserId>
-          <Title></Title>
-          <Description></Description>
+          <MainImg src={recipeData.mainImg}></MainImg>
+          <AvatarImg src={recipeData.creator.avatarImg}></AvatarImg>
+          <UserId>{recipeData.creator.name}</UserId>
+          <Title>{recipeData.title}</Title>
+          <Description>{recipeData.description}</Description>
           <CookingInfo>
-            <InfoItem />
-            <InfoItem />
-            <InfoItem />
+            <InfoItem>{recipeData.cookingInfo.type}</InfoItem>
+            <InfoItem>{recipeData.cookingInfo.servingSize}</InfoItem>
+            <InfoItem>{recipeData.cookingInfo.cookingTime}</InfoItem>
+            <InfoItem>{recipeData.cookingInfo.difficulty}</InfoItem>
           </CookingInfo>
         </MainWrap>
 
         <IngredientsWrap>
-          <IngredientsTitle></IngredientsTitle>
+          <IngredientsTitle>Ingredient</IngredientsTitle>
           <IngredientsDetailWrap>
-            <IngredientsDetailTitle></IngredientsDetailTitle>
+            <CoreItem>
+              <CoreText>Core Items: </CoreText>
+              {recipeData.coreItems.map((item, index) => (
+                <p key={index}>
+                  {item.itemName}
+                  {index < recipeData.coreItems.length - 1 ? ",ㅤ" : ""}
+                </p>
+              ))}
+            </CoreItem>
             <ContentsBox>
-              <Contents />
-              <Contents />
-              <Contents />
-              <Contents />
+              <Items />
+              <Items />
+              <Items />
+              <Items />
             </ContentsBox>
           </IngredientsDetailWrap>
         </IngredientsWrap>

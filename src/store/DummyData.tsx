@@ -1,4 +1,5 @@
 import { CardData } from "@/interface/recipe";
+
 const DummyData: CardData[] = [
   {
     thumbNailImg: "public/food/indianFood-image_127425-18.avif",

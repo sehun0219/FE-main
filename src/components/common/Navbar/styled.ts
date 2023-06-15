@@ -35,7 +35,7 @@ export const Line = styled.div`
 export const LogoWrap = styled.a`
   width: 210px;
   height: 100%;
-  position: absolute;
+  position: relative;
   left: 5%;
   color: #f6f7f9;
   font-size: 20px;
