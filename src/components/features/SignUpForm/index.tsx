@@ -16,7 +16,7 @@ import {
 
 import FormInput from "@/components/common/FormInput";
 import Footer from "@/components/common/Footer";
-import { ChangeEvent, FormEvent, useContext, useEffect, useState } from "react";
+import { ChangeEvent, FormEvent, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { postUserSignUp } from "@/apis/user";
 import { UserContext } from "@/store/UserContext";
@@ -29,7 +29,6 @@ const SignUpForm = () => {
   const [isPasswordValid, setIsPasswordValid] = useState<boolean>(false);
   const [avatarImg, setAvatarImg] = useState<File>();
 
-  // 물어봐야할것같다..
   const [avatarPreview, setAvatarPreview] = useState<string | null>(
     "public/Avatar/Avatar.png"
   );

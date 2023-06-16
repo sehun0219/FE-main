@@ -3,7 +3,6 @@ import {
   MainContentWrap,
   MainWrap,
   SideWrap,
-  Footer,
   MainImg,
   AvatarImg,
   UserId,
@@ -20,12 +19,11 @@ import {
   SideRecipeCard,
   SideRecipeImg,
   SideRecipeTitle,
-  IngredientsTitle,
+  FormTitle,
   IngredientsDetailWrap,
   CoreItem,
   ContentsBox,
   CookingStepWrap,
-  CookingStepTitle,
   CookingStepCard,
   StepNum,
   StepDesc,
@@ -38,10 +36,13 @@ import {
   TextWrap,
   GapBox,
   CoreText,
+  EachStepCard,
+  FooterBox,
 } from "./styled";
 import { useEffect, useState } from "react";
 import DummyRecipeData from "@/store/DummyRecipeData";
 import { RecipeData } from "@/interface/recipe";
+import Footer from "@/components/common/Footer";
 const DetailForm = () => {
   const [recipeData, setRecipeData] = useState<RecipeData>({
     mainImg: "",
@@ -57,7 +58,13 @@ const DetailForm = () => {
     coreItems: [],
     ingredient: [],
     completedImg: [],
-    cookingStep: [],
+    cookingStep: [
+      {
+        stepNum: 1,
+        stepDesc: "",
+        stepImg: "",
+      },
+    ],
     creator: {
       avatarImg: "",
       name: "",
@@ -86,7 +93,7 @@ const DetailForm = () => {
         </MainWrap>
 
         <IngredientsWrap>
-          <IngredientsTitle>Ingredient</IngredientsTitle>
+          <FormTitle>Ingredient</FormTitle>
           <IngredientsDetailWrap>
             <CoreItem>
               <CoreText>Core Items: </CoreText>
@@ -99,23 +106,25 @@ const DetailForm = () => {
             </CoreItem>
             <ContentsBox>
               {recipeData.ingredient.map((item, index) => (
-                <div key={index}>
-                  <Item>
-                    <ItemName>{item.name}</ItemName>
-                    <ItemQuantity>{item.quantity}</ItemQuantity>
-                  </Item>
-                </div>
+                <Item key={index}>
+                  <ItemName>{item.name}</ItemName>
+                  <ItemQuantity>{item.quantity}</ItemQuantity>
+                </Item>
               ))}
             </ContentsBox>
           </IngredientsDetailWrap>
         </IngredientsWrap>
 
         <CookingStepWrap>
-          <CookingStepTitle></CookingStepTitle>
+          <FormTitle>Cooking Steps</FormTitle>
           <CookingStepCard>
-            <StepNum></StepNum>
-            <StepDesc></StepDesc>
-            <StepImg></StepImg>
+            {recipeData.cookingStep.map((item, index) => (
+              <EachStepCard key={index}>
+                <StepNum>{item.stepNum}</StepNum>
+                <StepDesc>{item.stepDesc}</StepDesc>
+                <StepImg src={item.stepImg}></StepImg>
+              </EachStepCard>
+            ))}
           </CookingStepCard>
         </CookingStepWrap>
       </MainContentWrap>
@@ -134,7 +143,7 @@ const DetailForm = () => {
         </MostViewCard>
         <MostViewCard>
           <TextWrap>
-            <CardTitle>2ed Ranked</CardTitle>
+            <CardTitle>2nd Ranked</CardTitle>
             <ViewTitle>A must-win date recipe!...</ViewTitle>
             <ViewDesc></ViewDesc>
           </TextWrap>
@@ -172,8 +181,9 @@ const DetailForm = () => {
           <SideRecipeTitle></SideRecipeTitle>
         </SideRecipeCard>
       </SideWrap>
-
-      <Footer></Footer>
+      <FooterBox>
+        <Footer></Footer>
+      </FooterBox>
     </PageWrapper>
   );
 };

@@ -32,30 +32,53 @@ const DummyRecipeData: RecipeData[] = [
       {
         stepNum: 1,
         stepDesc:
-          "비닐봉지에요. 오늘 치킨 만들기 재료 중에서 이녀석이 일등공신이라고 할 수 있죠.",
-        stepImg: "public/StepImg/step1.jpeg",
+          "Please wash the chicken well and organize it so that it's easy to eat",
+        stepImg: "public/StepImg/step1.png",
       },
       {
         stepNum: 2,
-        stepDesc: "닭봉, 닭날개 850g을 준비했어요.",
-        stepImg: "public/StepImg/step2.jpeg",
+        stepDesc: "Add pepper, milk, salt to basic seasoning",
+        stepImg: "public/StepImg/step2.png",
       },
       {
         stepNum: 3,
         stepDesc:
-          "양념은 간장2, 설탕3, 마늘1, 커리가루2 의 비율로 섞어서 만들어주세요.",
-        stepImg: "public/StepImg/step3.jpeg",
+          "Mix the seasoning in the ratio of soy sauce 2, sugar 3, garlic 1, and curry powder 2",
+        stepImg: "public/StepImg/step3.png",
       },
       {
         stepNum: 4,
-        stepDesc: "모든 재료와 함께 물 두컵을 넣고 치킨을 냄비에서 끓여주세요",
-        stepImg: "public/StepImg/step4.jpeg",
+        stepDesc:
+          "When you're done making the sauce, add the frying powder to the chicken you've been soaking in milk.",
+        stepImg: "public/StepImg/step4.png",
+      },
+      {
+        stepNum: 5,
+        stepDesc:
+          "Put it in a plastic bag and make sure the seasoning is mixed evenly",
+        stepImg: "public/StepImg/step5.png",
+      },
+      {
+        stepNum: 6,
+        stepDesc: "Fry in oil",
+        stepImg: "public/StepImg/step6.png",
+      },
+      {
+        stepNum: 7,
+        stepDesc: "Fry in oil for about 20 minutes and take out",
+        stepImg: "public/StepImg/step7.png",
+      },
+      {
+        stepNum: 8,
+        stepDesc: "Mix the fried chicken with the sauce",
+        stepImg: "public/StepImg/step8.png",
       },
     ],
     completedImg: [
       { compImg: "public/CompImg/comp1.png" },
       { compImg: "public/CompImg/comp2.png" },
       { compImg: "public/CompImg/comp3.png" },
+      { compImg: "public/CompImg/comp4.png" },
     ],
     creator: {
       avatarImg: "public/Avatar/avatar1.avif",

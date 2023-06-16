@@ -3,12 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { postUserLogin } from "@/apis/user";
 import { UserContext } from "@/store/UserContext";
 
-const links = [
-  { text: "이메일 찾기", href: "" },
-  { text: "비밀번호 찾기", href: "" },
-  { text: "회원가입", href: "" },
-];
-
 export const useLoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -42,6 +36,5 @@ export const useLoginForm = () => {
     showPassword,
     setPassword,
     setShowPassword,
-    links,
   };
 };

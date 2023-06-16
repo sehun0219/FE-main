@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 export const PageWrapper = styled.div`
   width: 100%;
-  min-height: 100vh;
+  min-height: 96vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -18,7 +18,7 @@ export const FormContainer = styled.form`
   flex-wrap: wrap;
   width: 350px;
   height: 715px;
-  border-radius: 4px;
+  border-radius: 2px;
   background-color: #ffff;
 `;
 
@@ -31,6 +31,7 @@ export const LogoImg = styled.div`
   background-image: url("public/Logo/CardLogo.png");
   background-size: cover;
   background-position: center;
+  border-radius: 2px;
 `;
 
 export const GoogleLogin = styled.div`

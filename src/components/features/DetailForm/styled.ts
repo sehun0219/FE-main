@@ -7,11 +7,6 @@ export const PageWrapper = styled.div`
   flex-wrap: wrap;
   align-items: flex-start;
 `;
-export const Footer = styled.div`
-  border: 2px solid tomato;
-  width: 100%;
-  height: 160px;
-`;
 
 export const MainContentWrap = styled.div`
   display: flex;
@@ -106,7 +101,7 @@ export const IngredientsWrap = styled.div`
   display: flex;
   flex-direction: column;
 `;
-export const IngredientsTitle = styled.div`
+export const FormTitle = styled.div`
   justify-content: center;
   width: 100%;
   height: 50px;
@@ -182,7 +177,6 @@ export const ItemQuantity = styled.p`
 export const CookingStepWrap = styled.div`
   border: 2px solid #cbd5e1;
   width: 90%;
-  height: 400px;
   padding: 60px 100px 60px 100px;
   display: flex;
   flex-direction: column;
@@ -195,24 +189,42 @@ export const CookingStepTitle = styled.div`
 `;
 export const CookingStepCard = styled.div`
   width: 100%;
-  height: 200px; /* 갯수가 많아지면 늘어나야하는데..*/
   border: 1px solid #e9d5ff;
   display: flex;
   flex-wrap: wrap;
 `;
+
+export const EachStepCard = styled.div`
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+`;
 export const StepNum = styled.div`
-  width: 12%;
-  height: 200px;
-  border: 1px solid #c2420b;
+  width: 8%;
+  height: 180px;
+  border: 1px solid #5eead4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: #f6f7f9;
 `;
 export const StepDesc = styled.div`
-  width: 53%;
-  height: 200px;
+  width: 52%;
+  height: 180px;
   border: 1px solid #5eead4;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 12px;
+  font-size: 18px;
+  color: #f6f7f9;
+  font-weight: 400;
 `;
-export const StepImg = styled.div`
-  width: 35%;
-  height: 200px;
+export const StepImg = styled.img`
+  width: 40%;
+  height: 180px;
   border: 1px solid #5eead4;
 `;
 
@@ -306,4 +318,13 @@ export const SideRecipeTitle = styled.div`
   width: 90%;
   height: 20%;
   border: 1px solid #ffffff;
+`;
+
+export const FooterBox = styled.div`
+  width: 100%;
+  border-top: 1px solid tomato;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
