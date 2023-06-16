@@ -6,6 +6,7 @@ export const Container = styled.div`
   justify-content: space-between;
   width: 100%;
   height: 50px;
+  margin-top: 20px;
 `;
 
 export const Title = styled.p`
@@ -17,4 +18,6 @@ export const Title = styled.p`
 export const TextBox = styled.input`
   width: 610px;
   height: 100%;
+  padding-left: 18px;
+  font-size: 18px;
 `;

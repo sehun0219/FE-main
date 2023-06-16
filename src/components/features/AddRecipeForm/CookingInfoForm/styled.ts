@@ -3,15 +3,16 @@ import styled from "styled-components";
 export const CookingInfoContainer = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
   width: 100%;
-  height: 50px;
+  border: 1px solid #e1e;
 `;
 
 export const Title = styled.p`
+  border: 1px solid #e1e;
   font-size: 20px;
   font-weight: bold;
   color: #333333;
+  margin-right: 80px;
 `;
 
 export const Select = styled.select`
@@ -24,6 +25,5 @@ export const Select = styled.select`
   background-image: url("https://fonts.gstatic.com/s/i/materialiconsoutlined/keyboard_arrow_down/v7/24px.svg?download=true");
   background-repeat: no-repeat;
   background-position: right;
-  width: 123px;
-  height: 45px;
+  width: 124px;
 `;

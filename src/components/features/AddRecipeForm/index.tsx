@@ -175,31 +175,31 @@ const AddRecipeForm = () => {
 
   return (
     <Container>
-      <AddRecipeTitle>레시피 등록</AddRecipeTitle>
+      <AddRecipeTitle>Recipe Registration</AddRecipeTitle>
       <FirstSection>
         <FirstSectionInputWrap>
           <PTagForm
-            title="레시피 제목"
+            title="Title"
             value={title}
             onChange={(value) => {
               setTitle(value);
             }}
-            placeholder="예) 당근케익"
+            placeholder="eg. Tomato Pasta"
           />
           <TextAreaForm
             value={desc}
             onChange={(value) => {
               setDesc(value);
             }}
-            title="요리소개"
-            placeholder="이 요리의 탄생배경을 적어주세요"
+            title="Introduction"
+            placeholder="Please write down the background of this dish"
           />
           <CategoryForm
-            title="카테고리"
+            title="Categories"
             onChange={(value) => setCategory(value)}
           />
           <CookingInfo
-            title="요리정보"
+            title="Information"
             onChange={(value) => setCookingInfo(value)}
           />
         </FirstSectionInputWrap>

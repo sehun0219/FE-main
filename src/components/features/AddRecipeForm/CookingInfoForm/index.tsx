@@ -18,14 +18,14 @@ const CookingInfo = ({ title, onChange }: CookingInfoProps) => {
     <CookingInfoContainer>
       <Title>{title}</Title>
       <Select id="servingSize" onChange={handleSelectChange}>
-        <option value="hidden">인원</option>
-        <option value="1인분">1인분</option>
-        <option value="2인분">2인분</option>
-        <option value="3인분">3인분</option>
-        <option value="4인분 이상">4인분 이상</option>
+        <option value="hidden">Serving size</option>
+        <option value="For one">For one</option>
+        <option value="For Two">For Two</option>
+        <option value="For Three">For Three</option>
+        <option value="More than Four">More than Four</option>
       </Select>
       <Select id="cookingTime" onChange={handleSelectChange}>
-        <option value="hidden">시간</option>
+        <option value="hidden">Time</option>
         <option value="10 min">10 min</option>
         <option value="15 min">15 min</option>
         <option value="20 min">20 min</option>
@@ -33,11 +33,10 @@ const CookingInfo = ({ title, onChange }: CookingInfoProps) => {
         <option value="More than an hour">More than an hour</option>
       </Select>
       <Select id="difficulty" onChange={handleSelectChange}>
-        <option value="hidden">난이도</option>
-        <option value="아무나">아무나</option>
-        <option value="노말">노말</option>
-        <option value="하드">하드</option>
-        <option value="나이트메어">나이트메어</option>
+        <option value="hidden">Difficulty</option>
+        <option value="Anyone">Easy</option>
+        <option value="Normal">Normal</option>
+        <option value="Hard">Hard</option>
       </Select>
     </CookingInfoContainer>
   );

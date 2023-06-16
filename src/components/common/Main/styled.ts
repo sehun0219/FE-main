@@ -2,19 +2,20 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   width: calc(100% - 250px);
-  height: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
 `;
-
 export const Top = styled.div`
-  width: 90%;
-  height: 40px;
+  width: 500px;
   padding-top: 20px;
   font-size: 18px;
   font-weight: 600;
   padding-left: 68px;
   color: #4d5669;
+  margin-bottom: 4px;
   position: relative;
-  left: -16px;
+  left: -18px;
 `;
 export const MainBody = styled.div`
   width: 92%;

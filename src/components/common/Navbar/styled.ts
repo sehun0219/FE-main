@@ -7,6 +7,7 @@ export const NavbarContainer = styled.div`
   justify-content: space-between;
   background-color: #23272f;
   height: 60px;
+  padding: 8px 12px;
 `;
 export const ToggleBox = styled.button`
   width: 36px;
@@ -33,10 +34,6 @@ export const Line = styled.div`
 `;
 
 export const LogoWrap = styled.a`
-  width: 210px;
-  height: 100%;
-  position: relative;
-  left: 5%;
   color: #f6f7f9;
   font-size: 20px;
   font-weight: bold;
@@ -47,20 +44,16 @@ export const LogoWrap = styled.a`
 `;
 
 export const TextBox = styled.p`
-  width: 100%;
-  height: 30%;
-  padding-top: 4px;
-  margin-left: 4px;
   display: flex;
   align-items: center;
+  padding-top: 2px;
+  padding-left: 2px;
 `;
 export const LogoIcon = styled.img`
-  width: 18%;
-  height: 4%;
+  width: 55px;
 `;
 
 export const SearchWrap = styled.div`
-  width: 48%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -68,64 +61,58 @@ export const SearchWrap = styled.div`
     caret-color: #f1f1f1;
   }
 `;
-export const NavbarLogo = styled.p``;
 
 export const SearchBar = styled.input`
-  width: 80%;
+  width: 1000px;
   height: 40px;
-  border-radius: 50px;
+  border-radius: 1em;
+  padding-left: 30px;
+  margin-right: -70px;
   background-color: #353a48;
   border: none;
-  padding-left: 40px;
   color: #f1f1f1;
   font-size: 18px;
-  /* 포커스 시 outline 색상 변경 */
   &:focus {
     outline: 2px solid #21a1c1;
   }
-  position: relative;
-  left: 10%;
 `;
 
 export const CancelButton = styled.button`
-  width: 2%;
-  height: 3%;
   border-radius: 40%;
   background-color: #23272f;
   border: none;
-  position: absolute;
-  left: 63%;
-  color: #f1f1f1;
+  color: #696969;
   cursor: pointer;
+  margin-right: 10px;
+  font-size: 18px;
+  border-radius: 50%;
+  font-weight: 100;
 `;
 
 export const SearchButton = styled.button`
-  width: 2%;
-  height: 3%;
-  border-radius: 40%;
+  border-radius: 1em;
   background-color: #23272f;
   border: none;
-  position: absolute;
-  left: 66%;
   cursor: pointer;
 `;
 
 export const ButtonWrap = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   gap: 8px;
-  width: 25%;
   height: 100%;
-  position: relative;
-  left: -40px;
-  width: 240px;
+
+  gap: 16px;
+`;
+export const LogoutWrap = styled.div`
+  display: flex;
   gap: 16px;
 `;
 
 export const StyledLinkSignUp = styled(Link)`
   width: 100px;
-  height: 70%;
+  height: 80%;
   border-radius: 1em;
   background-color: #293644;
   font-size: 16px;
@@ -141,7 +128,7 @@ export const StyledLinkSignUp = styled(Link)`
 
 export const StyledLogin = styled(Link)`
   width: 100px;
-  height: 70%;
+  height: 80%;
   border: 1px solid red;
   border-radius: 1em;
   background-color: #293644;
@@ -156,14 +143,18 @@ export const StyledLogin = styled(Link)`
   justify-content: center;
   align-items: center;
 `;
-
+export const SignUpWarp = styled.div`
+  display: flex;
+  gap: 16px;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+`;
 export const WelcomeBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
-  left: -210px;
-  width: 100px;
+  width: 160px;
 `;
 
 export const WelcomeText = styled.p`
@@ -176,8 +167,24 @@ export const WelcomeText = styled.p`
 
 export const AddRecipeButton = styled(Link)`
   width: 100px;
-  height: 80%;
-  border: 1px solid red;
+  height: 100%;
+  border-radius: 1em;
+  background-color: #293644;
+  font-size: 16px;
+  font-weight: 400;
+  color: #f1f1f1;
+  &:hover {
+    background-color: #21a1c1;
+  }
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 4px;
+`;
+export const Logout = styled.button`
+  width: 100px;
+  height: 100%;
   border-radius: 1em;
   background-color: #293644;
   font-size: 16px;
@@ -191,20 +198,8 @@ export const AddRecipeButton = styled(Link)`
   justify-content: center;
   align-items: center;
 `;
-export const Logout = styled.button`
-  width: 100px;
-  height: 80%;
-  border: 1px solid red;
-  border-radius: 1em;
-  background-color: #293644;
-  font-size: 16px;
-  font-weight: 400;
-  color: #f1f1f1;
-  &:hover {
-    background-color: #21a1c1;
-  }
-  border: none;
+
+export const LogoutBox = styled.div`
   display: flex;
-  justify-content: center;
-  align-items: center;
+  gap: 16px;
 `;

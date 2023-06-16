@@ -15,6 +15,7 @@ import {
 import FormInput from "@/components/common/FormInput";
 import Footer from "@/components/common/Footer";
 const LoginForm = () => {
+  console.log(LoginForm);
   const { handleSubmit, email, setEmail, password, showPassword, setPassword } =
     useLoginForm();
   return (

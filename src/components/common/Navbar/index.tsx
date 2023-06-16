@@ -1,5 +1,6 @@
 import { useState, MouseEvent, ChangeEvent, useContext } from "react";
 import { UserContext } from "@/store/UserContext";
+import { useNavigate } from "react-router-dom";
 
 import {
   NavbarContainer,
@@ -19,9 +20,13 @@ import {
   ToggleBox,
   TextBox,
   Line,
+  LogoutWrap,
+  SignUpWarp,
+  LogoutBox,
 } from "./styled";
 
 const Navbar = () => {
+  const navigate = useNavigate();
   const [search, setSearch] = useState("");
   const [isSidebarVisible, setSidebarVisible] = useState(true);
   const toggleSidebar = () => {
@@ -36,6 +41,7 @@ const Navbar = () => {
 
   const handleLogout = () => {
     logout();
+    navigate("/");
   };
 
   const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
@@ -68,19 +74,21 @@ const Navbar = () => {
 
       <ButtonWrap>
         {!user?.name && !token && (
-          <>
+          <SignUpWarp>
             <StyledLinkSignUp to="/sign-up">Sign up</StyledLinkSignUp>
             <StyledLogin to="/login">Login</StyledLogin>
-          </>
-        )}{" "}
+          </SignUpWarp>
+        )}
         {user?.name && token && (
-          <>
+          <LogoutWrap>
             <WelcomeBox>
               <WelcomeText>Welcome!! {user.email}</WelcomeText>
             </WelcomeBox>
-            <AddRecipeButton to="/add-recipe">Add Recipe</AddRecipeButton>
-            <Logout onClick={handleLogout}>Logout</Logout>
-          </>
+            <LogoutBox>
+              <AddRecipeButton to="/add-recipe">Add Recipe</AddRecipeButton>
+              <Logout onClick={handleLogout}>Logout</Logout>
+            </LogoutBox>
+          </LogoutWrap>
         )}
       </ButtonWrap>
     </NavbarContainer>

@@ -14,8 +14,7 @@ export const AddRecipeTitle = styled.div`
   background-color: #f8f8f8;
   font-weight: bold;
   font-size: 20px;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding: 24px;
 `;
 
 export const FirstSectionInputWrap = styled.div`

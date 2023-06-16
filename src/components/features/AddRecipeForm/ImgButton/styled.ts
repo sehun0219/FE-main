@@ -9,6 +9,7 @@ export const UploadContainer = styled.div`
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  margin-top: 20px;
 `;
 export const UploadText = styled.div`
   color: black;

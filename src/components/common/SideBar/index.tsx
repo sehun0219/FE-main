@@ -1,9 +1,10 @@
+import { useContext } from "react";
 import {
   Container,
   SideBarMenu,
   ShortCut,
   FooterBox,
-  SingleMeneComp,
+  LinkTo,
   ShortCutMeneComp,
   ShortCutTitle,
   Br,
@@ -11,15 +12,30 @@ import {
   Text,
   GitLink,
 } from "./styled";
+import { UserContext } from "@/store/UserContext";
 
 const Sidebar = () => {
+  const userContext = useContext(UserContext);
+  if (!userContext) {
+    return <div>Loading...</div>;
+  }
+  const { user, token, logout } = userContext;
   return (
     <Container>
       <SideBarMenu>
-        <SingleMeneComp>Home</SingleMeneComp>
-        <SingleMeneComp>Saved</SingleMeneComp>
-        <SingleMeneComp>Liked</SingleMeneComp>
-        <SingleMeneComp>Login</SingleMeneComp>
+        <LinkTo to="/">Home</LinkTo>
+        {!user?.name && !token && (
+          <>
+            <LinkTo to="/login">Liked</LinkTo>
+          </>
+        )}
+        {user?.name && token && (
+          <>
+            <LinkTo to="/liked">Liked</LinkTo>
+          </>
+        )}
+        <LinkTo to="/recent">Recent</LinkTo>
+        <LinkTo to="/login">Login</LinkTo>
       </SideBarMenu>
       <Br />
       <ShortCut>

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+import { Link } from "react-router-dom";
 export const Container = styled.div`
   width: 250px;
   height: 920px;
@@ -31,7 +31,7 @@ export const ShortCutTitle = styled.p`
   text-decoration: underline;
 `;
 
-export const SingleMeneComp = styled.button`
+export const LinkTo = styled(Link)`
   width: 80%;
   height: 40px;
   margin: -25px;
@@ -51,7 +51,32 @@ export const SingleMeneComp = styled.button`
     background-color: #f1f1f1;
     color: #000;
   }
+  :active {
+    background-color: #000;
+    color: #f1f1f1;
+  }
+`;
 
+export const LinkedSavedBtn = styled.div`
+  width: 80%;
+  height: 40px;
+  margin: -25px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 400;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #f1f1f1;
+  background-color: transparent;
+  cursor: pointer;
+  border: 2px solid #353a48;
+  transition: background-color 0.2s ease-in-out;
+  :hover {
+    background-color: #f1f1f1;
+    color: #000;
+  }
   :active {
     background-color: #000;
     color: #f1f1f1;
