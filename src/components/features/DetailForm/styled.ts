@@ -47,7 +47,6 @@ export const AvatarImg = styled.img`
 `;
 export const UserId = styled.p`
   width: 160px;
-  height: 20px;
   margin-bottom: 20px;
   color: #f1f1f1;
   font-weight: bold;
@@ -59,7 +58,6 @@ export const UserId = styled.p`
 export const Title = styled.div`
   border: 1px solid #f1f1f1;
   width: 100%;
-  height: 30px;
   margin: 10px;
   font-size: 30px;
   font-weight: bold;
@@ -70,13 +68,13 @@ export const Title = styled.div`
 export const Description = styled.p`
   border: 1px solid #f1f1f1;
   width: 100%;
-  height: 6%;
   margin: 10px;
   display: flex;
   justify-content: center;
   color: #bebfc5;
   font-size: 18px;
   font-weight: 600;
+  padding: 12px;
 `;
 export const CookingInfo = styled.div`
   border: 1px solid #f1f1f1;
@@ -104,7 +102,6 @@ export const InfoItem = styled.p`
 export const IngredientsWrap = styled.div`
   border: 2px solid #f1f112;
   width: 90%;
-  height: 400px;
   padding: 60px 100px 40px 100px;
   display: flex;
   flex-direction: column;
@@ -118,24 +115,27 @@ export const IngredientsTitle = styled.div`
   font-size: x-large;
   font-weight: bold;
   color: #f6f7f9;
+  padding: 12px;
 `;
 export const IngredientsDetailWrap = styled.div`
   justify-content: center;
   width: 100%;
-  height: 200px; /* 갯수가 많아지면 늘어나야하는데..*/
+
   border: 1px solid #1f1;
+  padding-bottom: 10px;
   display: flex;
   flex-wrap: wrap;
 `;
 export const CoreItem = styled.p`
-  width: 97%;
-  height: 40px;
-  margin: 20px 10px -20px 10px;
+  width: 92%;
   color: #f6f7f9;
   font-weight: 400;
   font-size: 20px;
   display: flex;
   justify-content: first baseline;
+  border-bottom: 2px solid red;
+  margin: 16px;
+  padding-bottom: 8px;
 `;
 export const CoreText = styled.p`
   color: #f6f7f9;
@@ -144,19 +144,39 @@ export const CoreText = styled.p`
   width: 110px;
   display: flex;
 `;
+
 export const ContentsBox = styled.div`
   width: 97%;
-  height: 45%;
-  border: 1px solid #ca8a04;
+
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: center;
+  justify-content: space-evenly;
+  color: #ffffff;
 `;
-export const Items = styled.div`
+export const Item = styled.div`
   width: 320px;
-  height: 32px;
-  border: 1px solid #f9a8d4;
+  height: 45px;
+  border-bottom: 1px solid #f9a8d4;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+`;
+
+export const ItemName = styled.p`
+  width: 50%;
+  height: 30px;
+
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  font-weight: 400;
+`;
+export const ItemQuantity = styled.p`
+  width: 100px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  font-weight: 400;
 `;
 
 export const CookingStepWrap = styled.div`

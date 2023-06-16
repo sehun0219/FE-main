@@ -19,14 +19,14 @@ const DummyRecipeData: RecipeData[] = [
       { itemName: "Curry powder" },
     ],
     ingredient: [
-      { name: "조각난 치킨", quantity: "850g" },
-      { name: "빵가루", quantity: "3큰술" },
-      { name: "고춧가루", quantity: "1큰술" },
-      { name: "다진 청양고추", quantity: "2개" },
-      { name: "튀김가루", quantity: "2큰술" },
-      { name: "카레가루", quantity: "3큰술" },
-      { name: "파슬리", quantity: "1큰술" },
-      { name: "치즈가루", quantity: "조금" },
+      { name: "handled chicken", quantity: "850 g" },
+      { name: "Bread powder", quantity: "3 tablespoons" },
+      { name: "Red pepper powder", quantity: "1 tablespoons" },
+      { name: "Minced red pepper", quantity: "2 EA" },
+      { name: "Fried powder", quantity: "2 tablespoons" },
+      { name: "Curry powder", quantity: "3 tablespoons" },
+      { name: "Parsley", quantity: "1 tablespoons" },
+      { name: "Cheese powder", quantity: "a little" },
     ],
     cookingStep: [
       {

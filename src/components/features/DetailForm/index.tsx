@@ -30,7 +30,9 @@ import {
   StepNum,
   StepDesc,
   StepImg,
-  Items,
+  Item,
+  ItemName,
+  ItemQuantity,
   CardTitle,
   CardAvatar,
   TextWrap,
@@ -96,10 +98,14 @@ const DetailForm = () => {
               ))}
             </CoreItem>
             <ContentsBox>
-              <Items />
-              <Items />
-              <Items />
-              <Items />
+              {recipeData.ingredient.map((item, index) => (
+                <div key={index}>
+                  <Item>
+                    <ItemName>{item.name}</ItemName>
+                    <ItemQuantity>{item.quantity}</ItemQuantity>
+                  </Item>
+                </div>
+              ))}
             </ContentsBox>
           </IngredientsDetailWrap>
         </IngredientsWrap>
