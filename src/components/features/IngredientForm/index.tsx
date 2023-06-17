@@ -24,7 +24,7 @@ const IngredientForm = ({
     <IngredientWarp>
       {ingredientList.map((ingredient, index) => {
         return (
-          <IngredientContentBox>
+          <IngredientContentBox key={index}>
             <IngredientInput
               placeholder="eg. Tomato"
               value={ingredient.ingredient}

@@ -9,8 +9,8 @@ export const Container = styled.div`
 `;
 export const DummyContainer = styled.div`
   width: 100%;
-  height: 10px;
-  border: 1px solid red;
+  height: 100%;
+  padding-top: 15px;
 `;
 export const AddRecipeTitle = styled.div`
   display: flex;
@@ -23,11 +23,11 @@ export const AddRecipeTitle = styled.div`
 `;
 
 export const FirstSectionInputWrap = styled.div`
-  border: 1px solid red;
   display: flex;
   flex-direction: column;
   width: 800px;
   gap: 24px;
+  margin-left: 40px;
 `;
 
 export const FirstSection = styled.div`
@@ -78,7 +78,6 @@ export const ThirdSection = styled.div`
 `;
 
 export const StepTitle = styled.p`
-  border: 1px solid red;
   width: 94%;
 
   font-size: 20px;
@@ -87,7 +86,6 @@ export const StepTitle = styled.p`
   margin-left: 38px;
 `;
 export const StepExplanation = styled.span`
-  border: 1px solid red;
   margin-top: 12px;
   margin-left: 38px;
   font-weight: 300;

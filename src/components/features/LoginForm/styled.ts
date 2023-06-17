@@ -103,7 +103,7 @@ export const SignUpChecker = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 140px;
+  margin-bottom: 70px;
 `;
 
 export const SignUpText = styled(Link)`

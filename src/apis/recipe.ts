@@ -1,20 +1,10 @@
-// api/recipes.js
 import axios from "axios";
 
-// export const uploadRecipe = async (data: any) => {
-//   try {
-//     const response = await axios.post("http://localhost:8080/recipe/add", data);
-//   } catch (err) {
-//     console.error(err);
-//     throw err;
-//   }
-// };
-
-export const uploadRecipeImages = async (formData: FormData) => {
+export const uploadRecipe = async (recipeFormData: FormData) => {
   try {
-    const response = await axios.post(
+    const response = await axios.put(
       "http://localhost:8080/recipe/add",
-      formData,
+      recipeFormData,
       {
         headers: {
           "Content-Type": "multipart/form-data",

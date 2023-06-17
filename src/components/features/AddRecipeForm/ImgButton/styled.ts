@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const UploadContainer = styled.div`
-  border: 1px solid red;
   width: 250px;
   height: 250px;
   display: flex;
@@ -9,21 +8,22 @@ export const UploadContainer = styled.div`
   align-items: center;
   overflow: hidden;
   margin: 4px;
+  position: relative;
+  border: 1px solid #23272f;
+  border-radius: 4px;
 `;
 export const UploadText = styled.div`
   color: black;
   font-size: 20px;
   text-align: center;
-  z-index: 1;
-  pointer-events: none;
+  width: 100%;
+  position: absolute;
 `;
 export const FileInput = styled.input`
   opacity: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   cursor: pointer;
+  width: 100%;
+  height: 100%;
 `;
 
 export const ImagePreview = styled.img`

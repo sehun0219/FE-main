@@ -5,7 +5,7 @@ import CookingInfo from "@/components/features/AddRecipeForm/CookingInfoForm";
 import ImgButton from "@/components/features/AddRecipeForm/ImgButton";
 import StepForm from "@/components/features/AddRecipeForm/StepForm";
 import IngredientForm from "@/components/features/IngredientForm";
-import { uploadRecipeImages } from "@/apis/recipe";
+import { uploadRecipe } from "@/apis/recipe";
 import { UserContext } from "@/store/UserContext";
 
 import {
@@ -46,8 +46,12 @@ interface CompletedImg {
 const AddRecipeForm = () => {
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
-  const [category, setCategory] = useState<string[]>([]);
-  const [cookingInfo, setCookingInfo] = useState<string[]>([]);
+  const [category, setCategory] = useState<string>("");
+  const [cookingInfo, setCookingInfo] = useState<string[]>([
+    "hidden",
+    "hidden",
+    "hidden",
+  ]);
   const [cookingTip, setCookingTip] = useState("");
 
   const [mainImg, setMainImg] = useState<null | {
@@ -110,66 +114,13 @@ const AddRecipeForm = () => {
     setStepList(newStepList);
   };
 
-  const userContextValue = useContext(UserContext);
-  const user = userContextValue?.user;
   const handleSave = async () => {
-    if (
-      title === "" ||
-      desc === "" ||
-      mainImg === null ||
-      stepList.length === 0 ||
-      ingredientList.length === 0
-    ) {
-      alert("Please fill in everything");
-      return;
-    }
-
-    const formData = new FormData();
-
-    formData.append("title", title);
-    formData.append("desc", desc);
-    if (user?._id) {
-      formData.append("creator", user._id);
-    } else {
-      console.error("User._id is undefined");
-    }
-    if (mainImg !== null) {
-      formData.append("mainImg", mainImg.file);
-    }
-    formData.append("category", category.join(", "));
-    formData.append("cookingInfo", cookingInfo.join(", "));
-    formData.append("cookingTip", cookingTip);
-
-    stepList.forEach((step, index) => {
-      formData.append(`stepList[${index}][stepDesc]`, step.stepDesc);
-      if (step.imgSrc instanceof File) {
-        formData.append(`stepImages_${index}`, step.imgSrc); // 각 스텝 이미지를 고유한 필드로 보냅니다
-      }
-    });
-
-    ingredientList.forEach((ingredient, index) => {
-      formData.append(
-        `ingredientList[${index}][ingredient]`,
-        ingredient.ingredient
-      );
-
-      formData.append(
-        `ingredientList[${index}][quantity]`,
-        ingredient.quantity
-      );
-    });
-
-    completedImgs.forEach((img, index) => {
-      if (img !== null) {
-        formData.append(`completedImgs[${index}]`, img.file);
-      }
-    });
-
-    for (const key of formData.keys()) {
-      console.log(key, ":", formData.get(key));
-    }
-
-    uploadRecipeImages(formData);
+    const recipeFormData = new FormData();
+    recipeFormData.append("title", title);
+    recipeFormData.append("desc", desc);
+    recipeFormData.append("category", category);
+    recipeFormData.append("cookingInfo", cookingInfo.toString());
+    uploadRecipe(recipeFormData);
   };
 
   return (
@@ -195,23 +146,24 @@ const AddRecipeForm = () => {
           />
           <CategoryForm
             title="Categories"
-            onChange={(value) => setCategory(value)}
+            onChange={(value) => setCategory(value[0])}
           />
           <CookingInfo
             title="Information"
             onChange={(value) => setCookingInfo(value)}
           />
         </FirstSectionInputWrap>
-
-        <ImgButton
-          imgUrl={mainImg?.preview}
-          onImageUpload={(file) => {
-            setMainImg({
-              file,
-              preview: URL.createObjectURL(file),
-            });
-          }}
-        />
+        <DummyContainer>
+          <ImgButton
+            imgUrl={mainImg?.preview}
+            onImageUpload={(file) => {
+              setMainImg({
+                file,
+                preview: URL.createObjectURL(file),
+              });
+            }}
+          />
+        </DummyContainer>
       </FirstSection>
       <Br></Br>
       <SecondSection>

@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const Step = styled.div`
-  border: 1px solid #1e1;
   background-color: #f8f8f8;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -14,7 +13,6 @@ export const Step = styled.div`
   align-items: center;
 `;
 export const StepNum = styled.p`
-  border: 1px solid green;
   width: 100%;
   font-size: 20px;
   font-weight: bold;
@@ -36,7 +34,6 @@ export const StepText = styled.textarea`
   }
 `;
 export const StepItem = styled.div`
-  border: 1px solid blue;
   display: flex;
   flex-wrap: wrap;
   align-items: center;

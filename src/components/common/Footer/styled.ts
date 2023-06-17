@@ -7,7 +7,6 @@ export const Container = styled.div`
   background-color: #23272f;
   font-size: 14px;
   width: 920px;
-  height: 82px;
 `;
 
 export const Text = styled.p`

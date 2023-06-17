@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 export const NavbarContainer = styled.div`
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -10,6 +11,7 @@ export const NavbarContainer = styled.div`
   padding: 8px 12px;
 `;
 export const ToggleBox = styled.button`
+  position: absolute;
   width: 36px;
   height: 36px;
   border: 1px solid #23272f;
@@ -34,6 +36,8 @@ export const Line = styled.div`
 `;
 
 export const LogoWrap = styled.a`
+  position: absolute;
+  left: -20px;
   color: #f6f7f9;
   font-size: 20px;
   font-weight: bold;
@@ -44,16 +48,23 @@ export const LogoWrap = styled.a`
 `;
 
 export const TextBox = styled.p`
+  width: 180px;
+  position: absolute;
+  left: 180px;
   display: flex;
   align-items: center;
   padding-top: 2px;
   padding-left: 2px;
 `;
 export const LogoIcon = styled.img`
+  position: absolute;
+  left: 120px;
   width: 55px;
 `;
 
 export const SearchWrap = styled.div`
+  position: absolute;
+  left: 490px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -63,7 +74,7 @@ export const SearchWrap = styled.div`
 `;
 
 export const SearchBar = styled.input`
-  width: 1000px;
+  width: 700px;
   height: 40px;
   border-radius: 1em;
   padding-left: 30px;
@@ -90,6 +101,8 @@ export const CancelButton = styled.button`
 `;
 
 export const SearchButton = styled.button`
+  position: absolute;
+  left: 668px;
   border-radius: 1em;
   background-color: #23272f;
   border: none;
@@ -97,6 +110,8 @@ export const SearchButton = styled.button`
 `;
 
 export const ButtonWrap = styled.div`
+  position: absolute;
+  left: 1450px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -144,9 +159,11 @@ export const StyledLogin = styled(Link)`
   align-items: center;
 `;
 export const SignUpWarp = styled.div`
+  position: absolute;
+  left: 165px;
   display: flex;
   gap: 16px;
-  height: 100%;
+  height: 70%;
   justify-content: center;
   align-items: center;
 `;
