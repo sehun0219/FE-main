@@ -20,4 +20,6 @@ export const TextBox = styled.input`
   height: 100%;
   padding-left: 18px;
   font-size: 18px;
+  border-radius: 4px;
+  border: 1px solid #23272f;
 `;

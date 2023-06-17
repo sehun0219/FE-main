@@ -22,12 +22,11 @@ import {
   ForthSection,
   Complete,
   CompleteTitle,
-  FifthSection,
   CompleteImgWrap,
-  CookingTipP,
-  CookingTipTXT,
+  DummyContainer,
   SaveButton,
   Save,
+  Ingredient,
 } from "./styled";
 import { useState } from "react";
 
@@ -203,6 +202,7 @@ const AddRecipeForm = () => {
             onChange={(value) => setCookingInfo(value)}
           />
         </FirstSectionInputWrap>
+
         <ImgButton
           imgUrl={mainImg?.preview}
           onImageUpload={(file) => {
@@ -211,13 +211,16 @@ const AddRecipeForm = () => {
               preview: URL.createObjectURL(file),
             });
           }}
-        ></ImgButton>
+        />
       </FirstSection>
       <Br></Br>
       <SecondSection>
+        <Ingredient>Ingredient</Ingredient>
         <Notice>
-          재료가 남거나 부족하지 않도록 정확한 계량정보를 적어주세요
+          Please write down the exact measurement information so that there are
+          no leftovers or shortages
         </Notice>
+
         <IngredientForm
           ingredientList={ingredientList}
           onIngredientList={setIngredientList}
@@ -226,9 +229,10 @@ const AddRecipeForm = () => {
       <Br></Br>
 
       <ThirdSection>
-        <StepTitle>요리순서</StepTitle>
+        <StepTitle>Cooking Step</StepTitle>
         <StepExplanation>
-          {`요리의 맛이 좌우될 수 있는 중요한 부분은 빠짐없이 적어주세요....`}
+          Please write down every important part of the dish that can affect the
+          taste of the dish...
         </StepExplanation>
         <StepForm
           stepList={stepList}
@@ -241,7 +245,7 @@ const AddRecipeForm = () => {
       <Br></Br>
       <ForthSection>
         <Complete>
-          <CompleteTitle>요리완성사진</CompleteTitle>
+          <CompleteTitle>Finished cooking photo</CompleteTitle>
           <CompleteImgWrap>
             {completedImgs.map((img, index) => (
               <ImgButton
@@ -256,18 +260,8 @@ const AddRecipeForm = () => {
         </Complete>
       </ForthSection>
       <Br></Br>
-      <FifthSection>
-        <CookingTipP>요리팁</CookingTipP>
-        <CookingTipTXT
-          onChange={(e) => {
-            setCookingTip(e.target.value);
-          }}
-          placeholder="예)고기요리에는 소금보다 설탕을 먼저 넣어야 단맛이 겉돌지 않고 육질이 부드러워요"
-        ></CookingTipTXT>
-      </FifthSection>
-      <Br></Br>
       <SaveButton>
-        <Save onClick={handleSave}>레시피 업로드하기</Save>
+        <Save onClick={handleSave}>UpLoad</Save>
       </SaveButton>
     </Container>
   );

@@ -1,15 +1,14 @@
 import styled from "styled-components";
 
 export const UploadContainer = styled.div`
+  border: 1px solid red;
   width: 250px;
   height: 250px;
-  position: relative;
-  border: 1px solid black;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  margin-top: 20px;
+  margin: 4px;
 `;
 export const UploadText = styled.div`
   color: black;

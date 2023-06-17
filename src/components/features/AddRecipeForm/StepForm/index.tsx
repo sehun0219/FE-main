@@ -1,5 +1,12 @@
 import ImgButton from "@/components/features/AddRecipeForm/ImgButton";
-import { Step, StepNum, StepText, StepItem, StepAddButton } from "./styled";
+import {
+  Step,
+  StepNum,
+  StepText,
+  StepItem,
+  StepAddButton,
+  XBtn,
+} from "./styled";
 interface Step {
   id: number;
   stepDesc: string;
@@ -30,7 +37,7 @@ const StepForm = ({
         <StepItem key={step.id}>
           <StepNum>Step{index + 1}</StepNum>
           <StepText
-            placeholder="요리방법소개"
+            placeholder="Detailed description of the cooking steps"
             value={step.stepDesc}
             onChange={(e) => handleStepDescriptionChange(e, index)}
           />
@@ -43,12 +50,12 @@ const StepForm = ({
             }
           />
           {stepList.length > 1 && (
-            <button onClick={() => removeStep(step.id)}>X</button>
+            <XBtn onClick={() => removeStep(step.id)}>X</XBtn>
           )}
         </StepItem>
       ))}
 
-      <StepAddButton onClick={addStep}>Step 추가</StepAddButton>
+      <StepAddButton onClick={addStep}>+ step</StepAddButton>
     </Step>
   );
 };

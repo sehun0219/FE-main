@@ -4,9 +4,13 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   width: 1240px;
-  height: max-content;
   background-color: #23272f;
   padding: 32px;
+`;
+export const DummyContainer = styled.div`
+  width: 100%;
+  height: 10px;
+  border: 1px solid red;
 `;
 export const AddRecipeTitle = styled.div`
   display: flex;
@@ -15,9 +19,11 @@ export const AddRecipeTitle = styled.div`
   font-weight: bold;
   font-size: 20px;
   padding: 24px;
+  border-radius: 4px 4px 0 0;
 `;
 
 export const FirstSectionInputWrap = styled.div`
+  border: 1px solid red;
   display: flex;
   flex-direction: column;
   width: 800px;
@@ -31,16 +37,17 @@ export const FirstSection = styled.div`
   width: 100%;
   border-bottom: 1px solid #999999;
   padding-bottom: 32px;
+  border-radius: 0px 0px 4px 4px;
 `;
 
 export const SecondSection = styled.div`
   background-color: white;
   display: flex;
-  justify-content: space-evenly;
   flex-wrap: wrap;
   width: 100%;
   padding-bottom: 32px;
   min-height: 100px;
+  border-radius: 4px;
 `;
 
 export const Br = styled.div`
@@ -48,39 +55,47 @@ export const Br = styled.div`
   width: 100%;
   height: 10px;
 `;
+export const Ingredient = styled.div`
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 44px;
+  margin-left: 38px;
+`;
 
 export const Notice = styled.span`
-  padding-left: 40px;
-  font-weight: bold;
-  padding-top: 20px;
+  margin-top: 12px;
+  margin-left: 38px;
+  font-weight: 300;
   width: 100%;
-  margin-bottom: 30px;
 `;
 
 export const ThirdSection = styled.div`
   background-color: white;
+  border-radius: 4px;
   display: flex;
-  justify-content: space-around;
   flex-direction: column;
   flex-wrap: wrap;
-  width: 100%;
-  padding-bottom: 32px;
-  min-height: 100px;
-  padding: 40px; // 상하좌우 안쪽으로 20px만큼 들어감
 `;
 
 export const StepTitle = styled.p`
-  width: 120px;
-  height: 30px;
+  border: 1px solid red;
+  width: 94%;
+
   font-size: 20px;
   font-weight: bold;
+  margin-top: 44px;
+  margin-left: 38px;
 `;
 export const StepExplanation = styled.span`
-  display: block;
-  font-size: 16px;
-  margin-bottom: 20px;
+  border: 1px solid red;
+  margin-top: 12px;
+  margin-left: 38px;
+  font-weight: 300;
+  width: 94%;
 `;
 export const StepForm = styled.div`
+  border: 1px solid red;
+
   display: flex;
   justify-content: center;
   gap: 5px;
@@ -120,7 +135,8 @@ export const ForthSection = styled.div`
   width: 100%;
   padding-bottom: 32px;
   min-height: 100px;
-  padding: 40px; // 상하좌우 안쪽으로 20px만큼 들어감
+  padding: 40px;
+  border-radius: 4px;
 `;
 
 export const Complete = styled.div`
@@ -152,13 +168,13 @@ export const FifthSection = styled.div`
 export const SaveButton = styled.div`
   background-color: white;
   display: flex;
-  justify-content: space-around;
-  flex-direction: column;
-  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   padding-bottom: 32px;
   min-height: 100px;
-  padding: 40px; // 상하좌우 안쪽으로 20px만큼 들어감
+  padding: 40px;
+  border-radius: 4px;
 `;
 
 export const CookingTipP = styled.p`
@@ -170,4 +186,14 @@ export const CookingTipTXT = styled.textarea`
   font-size: 20px;
 `;
 
-export const Save = styled.button``;
+export const Save = styled.button`
+  width: 200px;
+  height: 40px;
+  background-color: #23272f;
+  color: #f1f1f1;
+  border: none;
+  border-radius: 1em;
+  font-weight: bold;
+  font-size: 18px;
+  cursor: pointer;
+`;

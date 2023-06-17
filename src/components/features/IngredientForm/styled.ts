@@ -1,41 +1,47 @@
 import styled from "styled-components";
 
-export const IngredientWarp = styled.div``;
-
-export const IngredientRow = styled.div`
+export const IngredientWarp = styled.div`
+  background-color: #f8f8f8;
+  padding-top: 4px;
+  padding-bottom: 4px;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
+  width: 100%;
+  margin-top: 24px;
+`;
+
+export const IngredientContentBox = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: 4px;
 `;
 
 export const IngredientInput = styled.input`
-  width: 200px;
-  height: 50px;
-  margin-left: 4px;
-  margin-bottom: 4px;
   padding-inline-start: 12px;
   text-align: start;
   text-decoration: none;
   font-size: 16px;
-  position: relative;
-  left: -60px;
+  border: 1px solid #23272f;
+  border-radius: 4px;
+  width: 250px;
+  height: 40px;
+`;
+export const ButtonWrap = styled.div`
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
 `;
 
-export const IngredientAddButton = styled.button`
-  width: 20px;
-  height: 20px;
-  background-color: #23272f; /* 버튼 배경 색상을 변경합니다. */
-  border: none; /* 버튼 테두리를 없앱니다. */
-  color: white; /* 글씨 색상을 흰색으로 바꿉니다. */
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 6px; /* 글씨 크기를 줄입니다. */
+export const IngredientXButton = styled.button`
+  background-color: #23272f;
+  height: 50%;
+  border-radius: 50%;
   cursor: pointer;
-  border-radius: 50%; /* 버튼을 원형으로 만듭니다. */
-  padding: 0; /* 패딩을 0으로 설정합니다. */
-  overflow: hidden; /* 글씨가 버튼 밖으로 나가는 것을 방지합니다. */
-  position: relative;
-  left: -50px;
+  border: none;
+  color: #f1f1f1;
+  margin-left: -12px;
 `;

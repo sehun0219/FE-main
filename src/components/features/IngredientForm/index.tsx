@@ -2,8 +2,9 @@ import AddButton from "@/components/common/AddButton";
 import {
   IngredientWarp,
   IngredientInput,
-  IngredientAddButton,
-  IngredientRow,
+  IngredientXButton,
+  IngredientContentBox,
+  ButtonWrap,
 } from "./styled";
 interface Ingredient {
   ingredient: string;
@@ -23,56 +24,56 @@ const IngredientForm = ({
     <IngredientWarp>
       {ingredientList.map((ingredient, index) => {
         return (
-          <IngredientRow>
-            <div>
-              <IngredientInput
-                placeholder="eg. Tomato"
-                value={ingredient.ingredient}
-                onChange={(e) => {
-                  const newIngredientList = [...ingredientList];
-                  newIngredientList[index].ingredient = e.target.value;
-                  onIngredientList(newIngredientList);
-                }}
-              />
+          <IngredientContentBox>
+            <IngredientInput
+              placeholder="eg. Tomato"
+              value={ingredient.ingredient}
+              onChange={(e) => {
+                const newIngredientList = [...ingredientList];
+                newIngredientList[index].ingredient = e.target.value;
+                onIngredientList(newIngredientList);
+              }}
+            />
 
-              <IngredientInput
-                placeholder="eg. 2 EA"
-                value={ingredient.quantity}
-                onChange={(e) => {
-                  const newIngredientList = [...ingredientList];
-                  newIngredientList[index].quantity = e.target.value;
-                  onIngredientList(newIngredientList);
-                }}
-              />
+            <IngredientInput
+              placeholder="eg. 2 EA"
+              value={ingredient.quantity}
+              onChange={(e) => {
+                const newIngredientList = [...ingredientList];
+                newIngredientList[index].quantity = e.target.value;
+                onIngredientList(newIngredientList);
+              }}
+            />
 
-              {ingredientList.length > 1 && (
-                <IngredientAddButton
-                  onClick={() => {
-                    onIngredientList(
-                      ingredientList.filter((_, i) => i !== index)
-                    );
-                  }}
-                >
-                  x
-                </IngredientAddButton>
-              )}
-            </div>
-          </IngredientRow>
+            {ingredientList.length > 1 && (
+              <IngredientXButton
+                onClick={() => {
+                  onIngredientList(
+                    ingredientList.filter((_, i) => i !== index)
+                  );
+                }}
+              >
+                x
+              </IngredientXButton>
+            )}
+          </IngredientContentBox>
         );
       })}
-      <AddButton
-        onClick={() => {
-          onIngredientList([
-            ...ingredientList,
-            {
-              ingredient: "",
-              quantity: "",
-            },
-          ]);
-        }}
-      >
-        재료추가
-      </AddButton>
+      <ButtonWrap>
+        <AddButton
+          onClick={() => {
+            onIngredientList([
+              ...ingredientList,
+              {
+                ingredient: "",
+                quantity: "",
+              },
+            ]);
+          }}
+        >
+          + Ingredient
+        </AddButton>
+      </ButtonWrap>
     </IngredientWarp>
   );
 };

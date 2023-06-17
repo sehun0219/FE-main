@@ -4,15 +4,13 @@ export const CookingInfoContainer = styled.div`
   display: flex;
   align-items: center;
   width: 100%;
-  border: 1px solid #e1e;
 `;
 
 export const Title = styled.p`
-  border: 1px solid #e1e;
   font-size: 20px;
   font-weight: bold;
   color: #333333;
-  margin-right: 80px;
+  margin-right: 83px;
 `;
 
 export const Select = styled.select`
@@ -26,4 +24,10 @@ export const Select = styled.select`
   background-repeat: no-repeat;
   background-position: right;
   width: 124px;
+`;
+
+export const SelectBox = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 620px;
 `;

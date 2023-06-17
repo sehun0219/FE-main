@@ -1,39 +1,47 @@
 import styled from "styled-components";
 
 export const Step = styled.div`
+  border: 1px solid #1e1;
+  background-color: #f8f8f8;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  width: 100%;
+  margin-top: 24px;
+  margin-bottom: 30px;
   display: flex;
   flex-direction: column;
-  margin-bottom: 20px;
-  padding: 10px;
+  justify-content: center;
+  align-items: center;
 `;
 export const StepNum = styled.p`
-  font-size: large;
+  border: 1px solid green;
+  width: 100%;
+  font-size: 20px;
   font-weight: bold;
-  margin-right: 10px;
+  margin-bottom: 8px;
 `;
 export const StepText = styled.textarea`
-  flex: 1;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   resize: none;
+  width: 650px;
   height: 250px;
   margin-right: 10px;
-  padding: 5px;
+  padding: 24px;
   font-size: 24px;
   border: 1px solid #ccc;
-  border-radius: 3px;
+  border-radius: 4px;
   ::placeholder {
-    color: rgba(
-      0,
-      0,
-      0,
-      0.5
-    ); // 프레이스홀더 텍스트를 검은색의 50% 투명도로 설정
+    color: rgba(0, 0, 0, 0.5);
   }
 `;
 export const StepItem = styled.div`
+  border: 1px solid blue;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
-  margin-bottom: 10px;
+  padding-top: 24px;
+  padding-left: 34px;
 `;
 export const StepAddButton = styled.button`
   display: flex;
@@ -41,14 +49,22 @@ export const StepAddButton = styled.button`
   align-items: center;
   border: none;
   color: white;
-  padding: 4px 32px;
-  text-align: center;
-  text-decoration: none;
-  font-size: 16px;
-  margin: 12px auto;
+  font-size: 18px;
   cursor: pointer;
-  border-radius: 25px; // 버튼 모서리를 둥글게 만듭니다.
-  background-color: #23272f; // 버튼 배경색을 변경합니다.
-  position: relative; // 위치를 조정하기 위해 relative 포지셔닝을 사용합니다.
-  left: -70px; // 왼쪽으로 10px 이동합니다.
+  border-radius: 1em;
+  background-color: #23272f;
+  width: 120px;
+  height: 34px;
+  margin-top: 20px;
+`;
+export const XBtn = styled.button`
+  width: 24px;
+  height: 24px;
+  margin-left: 20px;
+  border-radius: 50%;
+  border: none;
+  background-color: #23272f;
+  color: #f1f1f1;
+  cursor: pointer;
+  margin-left: 8px;
 `;
