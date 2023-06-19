@@ -2,16 +2,20 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 export const NavbarContainer = styled.div`
-  position: relative;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   background-color: #23272f;
   height: 60px;
-  padding: 8px 12px;
+  border: 1px solid green;
+  min-width: 100%;
+
+  // 미디어 쿼리 추가
+  @media (max-width: 768px) {
+    flex-direction: column;
+    height: auto;
+  }
 `;
 export const ToggleBox = styled.button`
-  position: absolute;
   width: 36px;
   height: 36px;
   border: 1px solid #23272f;
@@ -36,45 +40,41 @@ export const Line = styled.div`
 `;
 
 export const LogoWrap = styled.a`
-  position: absolute;
-  left: -20px;
-  color: #f6f7f9;
+  margin-left: 24px;
   font-size: 20px;
   font-weight: bold;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 4px;
+  border: 1px solid red;
 `;
 
 export const TextBox = styled.p`
+  color: #f6f7f9;
   width: 180px;
-  position: absolute;
-  left: 180px;
   display: flex;
   align-items: center;
   padding-top: 2px;
   padding-left: 2px;
 `;
 export const LogoIcon = styled.img`
-  position: absolute;
-  left: 120px;
   width: 55px;
 `;
 
 export const SearchWrap = styled.div`
-  position: absolute;
-  left: 490px;
+  width: 50%;
   display: flex;
   align-items: center;
-  justify-content: center;
   input[type="text"]:focus {
     caret-color: #f1f1f1;
   }
+  border: 1px solid red;
+  margin-left: 130px;
 `;
 
 export const SearchBar = styled.input`
-  width: 700px;
+  width: 97%;
   height: 40px;
   border-radius: 1em;
   padding-left: 30px;
@@ -85,6 +85,11 @@ export const SearchBar = styled.input`
   font-size: 18px;
   &:focus {
     outline: 2px solid #21a1c1;
+  }
+  // 미디어 쿼리 추가
+  @media (max-width: 768px) {
+    width: 90%;
+    margin-right: 0;
   }
 `;
 
@@ -101,8 +106,6 @@ export const CancelButton = styled.button`
 `;
 
 export const SearchButton = styled.button`
-  position: absolute;
-  left: 668px;
   border-radius: 1em;
   background-color: #23272f;
   border: none;

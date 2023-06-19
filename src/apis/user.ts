@@ -10,9 +10,8 @@ export const postUserLogin = async (loginData: LoginData) => {
     if (res.status === 200) {
       return res.data;
     }
-    return null;
   } catch (err) {
-    return null;
+    alert("Incorrect login information");
   }
 };
 

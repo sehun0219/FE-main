@@ -6,7 +6,7 @@ import ImgButton from "@/components/features/AddRecipeForm/ImgButton";
 import StepForm from "@/components/features/AddRecipeForm/StepForm";
 import IngredientForm from "@/components/features/IngredientForm";
 import { uploadRecipe } from "@/apis/recipe";
-import { UserContext } from "@/store/UserContext";
+import { useNavigate } from "react-router-dom";
 
 import {
   Container,
@@ -30,11 +30,9 @@ import {
 } from "./styled";
 import { useState } from "react";
 
-import React, { useContext } from "react";
-
 interface Step {
   stepDesc: string;
-  imgSrc: string | File;
+  imgSrc: File | string;
   id: number;
 }
 
@@ -44,6 +42,7 @@ interface CompletedImg {
 }
 
 const AddRecipeForm = () => {
+  const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   const [category, setCategory] = useState<string>("");
@@ -52,7 +51,6 @@ const AddRecipeForm = () => {
     "hidden",
     "hidden",
   ]);
-  const [cookingTip, setCookingTip] = useState("");
 
   const [mainImg, setMainImg] = useState<null | {
     file: File;
@@ -93,7 +91,7 @@ const AddRecipeForm = () => {
   const handleImageUpload = (file: File, index: number) => {
     const imgUrl = URL.createObjectURL(file);
     const newStepList = [...stepList];
-    newStepList[index].imgSrc = imgUrl;
+    newStepList[index].imgSrc = file;
     setStepList(newStepList);
   };
   const handleCompletedImageUpload = (file: File, index: number) => {
@@ -116,11 +114,51 @@ const AddRecipeForm = () => {
 
   const handleSave = async () => {
     const recipeFormData = new FormData();
+
+    recipeFormData.append(
+      "userInfo",
+      JSON.stringify(window.localStorage.getItem("userInfo"))
+    );
+
     recipeFormData.append("title", title);
     recipeFormData.append("desc", desc);
     recipeFormData.append("category", category);
     recipeFormData.append("cookingInfo", cookingInfo.toString());
+
+    if (mainImg && mainImg.file) {
+      const temp = new File([mainImg.file], Date.now() + "mainImg.png");
+      console.log("0000", temp);
+      recipeFormData.append("mainImg", temp);
+    } else {
+      alert("Please add images");
+    }
+    recipeFormData.append("ingredient", JSON.stringify(ingredientList));
+
+    stepList.forEach((step, index) => {
+      if (step) {
+        const temp = new File([step.imgSrc], index + Date.now() + ".png");
+        recipeFormData.append("cookingStep", temp);
+        console.log("11111", temp);
+        recipeFormData.append("cookingStepDesc", step.stepDesc);
+        recipeFormData.append("cookingStepId", step.id.toString());
+      }
+    });
+
+    completedImgs.forEach((completedImgs, index) => {
+      if (completedImgs) {
+        const temp = new File(
+          [completedImgs.file],
+          index + Date.now() + "completedImgs.png"
+        );
+        recipeFormData.append("completedImgs", temp);
+        console.log("22222", temp);
+      }
+    });
+
     uploadRecipe(recipeFormData);
+    alert(`${title} 레시피를 등록합니다`);
+    navigate("/"); // 해당래시피 상세페이지로 가게해야함
+    //유저정보 서버로 보내야함
   };
 
   return (
@@ -172,7 +210,6 @@ const AddRecipeForm = () => {
           Please write down the exact measurement information so that there are
           no leftovers or shortages
         </Notice>
-
         <IngredientForm
           ingredientList={ingredientList}
           onIngredientList={setIngredientList}

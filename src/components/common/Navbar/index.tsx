@@ -1,6 +1,7 @@
 import { useState, MouseEvent, ChangeEvent, useContext } from "react";
 import { UserContext } from "@/store/UserContext";
 import { useNavigate } from "react-router-dom";
+import { useSidebar } from "@/store/SidebarContext";
 
 import {
   NavbarContainer,
@@ -26,12 +27,9 @@ import {
 } from "./styled";
 
 const Navbar = () => {
+  const { toggleSidebar } = useSidebar();
   const navigate = useNavigate();
   const [search, setSearch] = useState("");
-  const [isSidebarVisible, setSidebarVisible] = useState(true);
-  const toggleSidebar = () => {
-    setSidebarVisible(!isSidebarVisible);
-  };
   const userContext = useContext(UserContext);
   if (!userContext) {
     return <div>Loading...</div>;
@@ -50,9 +48,11 @@ const Navbar = () => {
   };
 
   const handleSearchButton = (e: MouseEvent<HTMLButtonElement>) => {
-    // 쿼리만들고 결과값 찾아서 아랫쪽에 뿌려줘야함...
     e.preventDefault();
     return null;
+  };
+  const handleCancel = () => {
+    setSearch("");
   };
 
   return (
@@ -68,7 +68,7 @@ const Navbar = () => {
       </LogoWrap>
       <SearchWrap>
         <SearchBar type="text" value={search} onChange={handleSearch} />
-        <CancelButton>X</CancelButton>
+        <CancelButton onClick={handleCancel}>X</CancelButton>
         <SearchButton onClick={handleSearchButton}>🔍</SearchButton>
       </SearchWrap>
 

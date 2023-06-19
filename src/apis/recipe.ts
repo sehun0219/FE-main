@@ -4,12 +4,7 @@ export const uploadRecipe = async (recipeFormData: FormData) => {
   try {
     const response = await axios.put(
       "http://localhost:8080/recipe/add",
-      recipeFormData,
-      {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      }
+      recipeFormData
     );
 
     console.log("Recipe saved successfully:", response.data);

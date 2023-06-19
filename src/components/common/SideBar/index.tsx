@@ -13,15 +13,17 @@ import {
   GitLink,
 } from "./styled";
 import { UserContext } from "@/store/UserContext";
+import { useSidebar } from "@/store/SidebarContext";
 
 const Sidebar = () => {
+  const { isSidebarVisible } = useSidebar();
   const userContext = useContext(UserContext);
   if (!userContext) {
     return <div>Loading...</div>;
   }
   const { user, token, logout } = userContext;
   return (
-    <Container>
+    <Container isSidebarVisible={isSidebarVisible}>
       <SideBarMenu>
         <LinkTo to="/">Home</LinkTo>
         {!user?.name && !token && (

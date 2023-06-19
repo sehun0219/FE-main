@@ -1,10 +1,10 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-export const Container = styled.div`
+export const Container = styled.div<{ isSidebarVisible: boolean }>`
   width: 250px;
   height: 920px;
-  display: flex;
   flex-direction: column;
+  display: ${({ isSidebarVisible }) => (isSidebarVisible ? "block" : "none")};
 `;
 
 export const SideBarMenu = styled.div`
