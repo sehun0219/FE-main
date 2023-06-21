@@ -163,7 +163,7 @@ const DetailForm = () => {
             <ViewId></ViewId>
           </CardAvatar>
         </MostViewCard>
-        <GapBox>Recomendable</GapBox>
+        <GapBox>Recommendable</GapBox>
         <SideRecipeCard>
           <SideRecipeImg></SideRecipeImg>
           <SideRecipeTitle></SideRecipeTitle>

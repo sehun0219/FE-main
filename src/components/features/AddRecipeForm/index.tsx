@@ -7,7 +7,8 @@ import StepForm from "@/components/features/AddRecipeForm/StepForm";
 import IngredientForm from "@/components/features/IngredientForm";
 import { uploadRecipe } from "@/apis/recipe";
 import { useNavigate } from "react-router-dom";
-
+import { useContext } from "react";
+import { UserContext } from "@/store/UserContext";
 import {
   Container,
   AddRecipeTitle,
@@ -43,6 +44,7 @@ interface CompletedImg {
 
 const AddRecipeForm = () => {
   const navigate = useNavigate();
+  const userContext = useContext(UserContext);
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   const [category, setCategory] = useState<string>("");
@@ -89,7 +91,6 @@ const AddRecipeForm = () => {
     );
   };
   const handleImageUpload = (file: File, index: number) => {
-    const imgUrl = URL.createObjectURL(file);
     const newStepList = [...stepList];
     newStepList[index].imgSrc = file;
     setStepList(newStepList);
@@ -114,36 +115,35 @@ const AddRecipeForm = () => {
 
   const handleSave = async () => {
     const recipeFormData = new FormData();
-
-    recipeFormData.append(
-      "userInfo",
-      JSON.stringify(window.localStorage.getItem("userInfo"))
-    );
-
+    const name = userContext?.name; // 사용자의 이름에 접근
+    const email = userContext?.email; // 사용자의 이메일에 접근
+    if (name !== null && name !== undefined) {
+      recipeFormData.append("name", name);
+    }
+    if (email !== null && email !== undefined) {
+      recipeFormData.append("email", email);
+    }
     recipeFormData.append("title", title);
     recipeFormData.append("desc", desc);
     recipeFormData.append("category", category);
-    recipeFormData.append("cookingInfo", cookingInfo.toString());
+
+    recipeFormData.append("cookingInfo", cookingInfo.join(","));
 
     if (mainImg && mainImg.file) {
       const temp = new File([mainImg.file], Date.now() + "mainImg.png");
-      console.log("0000", temp);
       recipeFormData.append("mainImg", temp);
     } else {
       alert("Please add images");
     }
     recipeFormData.append("ingredient", JSON.stringify(ingredientList));
-
     stepList.forEach((step, index) => {
       if (step) {
         const temp = new File([step.imgSrc], index + Date.now() + ".png");
         recipeFormData.append("cookingStep", temp);
-        console.log("11111", temp);
         recipeFormData.append("cookingStepDesc", step.stepDesc);
         recipeFormData.append("cookingStepId", step.id.toString());
       }
     });
-
     completedImgs.forEach((completedImgs, index) => {
       if (completedImgs) {
         const temp = new File(
@@ -151,14 +151,11 @@ const AddRecipeForm = () => {
           index + Date.now() + "completedImgs.png"
         );
         recipeFormData.append("completedImgs", temp);
-        console.log("22222", temp);
       }
     });
-
-    uploadRecipe(recipeFormData);
+    await uploadRecipe(recipeFormData);
     alert(`${title} 레시피를 등록합니다`);
-    navigate("/"); // 해당래시피 상세페이지로 가게해야함
-    //유저정보 서버로 보내야함
+    navigate("/");
   };
 
   return (

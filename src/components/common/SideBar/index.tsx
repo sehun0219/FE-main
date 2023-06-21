@@ -21,7 +21,7 @@ const Sidebar = () => {
   if (!userContext) {
     return <div>Loading...</div>;
   }
-  const { user, token, logout } = userContext;
+  const { user, token } = userContext;
   return (
     <Container isSidebarVisible={isSidebarVisible}>
       <SideBarMenu>

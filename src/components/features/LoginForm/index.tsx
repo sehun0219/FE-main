@@ -6,7 +6,6 @@ import {
   PageWrapper,
   BrWrap,
   Br,
-  GoogleLogin,
   PassWordChecker,
   SignUpChecker,
   SignUpText,
@@ -14,10 +13,16 @@ import {
 } from "./styled";
 import FormInput from "@/components/common/FormInput";
 import Footer from "@/components/common/Footer";
+import { GoogleLogin } from "@react-oauth/google";
+
 const LoginForm = () => {
-  console.log(LoginForm);
   const { handleSubmit, email, setEmail, password, showPassword, setPassword } =
     useLoginForm();
+
+  const responseMessage = (response: any) => {
+    console.log(response);
+  };
+
   return (
     <PageWrapper>
       <FormContainer onSubmit={handleSubmit}>
@@ -47,7 +52,10 @@ const LoginForm = () => {
           Or
           <Br></Br>
         </BrWrap>
-        <GoogleLogin>Login by Google</GoogleLogin>
+
+        <div>
+          <GoogleLogin onSuccess={responseMessage} />
+        </div>
         <PassWordChecker to="/">Did you forget your password?</PassWordChecker>
       </FormContainer>
       <SignUpChecker>

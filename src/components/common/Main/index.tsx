@@ -44,8 +44,8 @@ const Main = () => {
         {DummyData.filter(
           (_, i) => 15 * (pagePos - 1) <= i && i < 15 * pagePos
         ).map((item, i) => (
-          <Link to="/detail">
-            <RecipeCard key={i} data={item} />
+          <Link to="/detail" key={i}>
+            <RecipeCard key={item.id} data={item} />
           </Link>
         ))}
       </MainBody>

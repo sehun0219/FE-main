@@ -11,7 +11,6 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  border: 1px solid red;
 `;
 
 const Home = () => {

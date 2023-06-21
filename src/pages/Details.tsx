@@ -7,12 +7,12 @@ import { UserProvider } from "@/store/UserContext";
 const Details = () => {
   return (
     <BaseLayout>
-      <SidebarProvider>
-        <UserProvider>
+      <UserProvider>
+        <SidebarProvider>
           <Navbar />
           <DetailForm />
-        </UserProvider>
-      </SidebarProvider>
+        </SidebarProvider>
+      </UserProvider>
     </BaseLayout>
   );
 };

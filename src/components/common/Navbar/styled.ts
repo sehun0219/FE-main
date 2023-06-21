@@ -4,9 +4,10 @@ import { Link } from "react-router-dom";
 export const NavbarContainer = styled.div`
   display: flex;
   align-items: center;
+  justify-content: space-around;
   background-color: #23272f;
   height: 60px;
-  border: 1px solid green;
+
   min-width: 100%;
 
   // 미디어 쿼리 추가
@@ -34,7 +35,7 @@ export const ToggleBox = styled.button`
   transition: background-color 0.1s;
 `;
 export const Line = styled.div`
-  width: 100%;
+  width: 24px;
   height: 1%;
   border: 2px solid #f6f7f9;
 `;
@@ -47,7 +48,6 @@ export const LogoWrap = styled.a`
   align-items: center;
   justify-content: center;
   gap: 4px;
-  border: 1px solid red;
 `;
 
 export const TextBox = styled.p`
@@ -69,7 +69,7 @@ export const SearchWrap = styled.div`
   input[type="text"]:focus {
     caret-color: #f1f1f1;
   }
-  border: 1px solid red;
+
   margin-left: 130px;
 `;
 
@@ -113,19 +113,21 @@ export const SearchButton = styled.button`
 `;
 
 export const ButtonWrap = styled.div`
-  position: absolute;
-  left: 1450px;
+  margin-left: 220px;
+
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   gap: 8px;
   height: 100%;
-
   gap: 16px;
 `;
 export const LogoutWrap = styled.div`
   display: flex;
   gap: 16px;
+  height: 100%;
+  position: relative;
+  left: -30px;
 `;
 
 export const StyledLinkSignUp = styled(Link)`
@@ -147,7 +149,7 @@ export const StyledLinkSignUp = styled(Link)`
 export const StyledLogin = styled(Link)`
   width: 100px;
   height: 80%;
-  border: 1px solid red;
+
   border-radius: 1em;
   background-color: #293644;
   font-size: 16px;
@@ -162,8 +164,7 @@ export const StyledLogin = styled(Link)`
   align-items: center;
 `;
 export const SignUpWarp = styled.div`
-  position: absolute;
-  left: 165px;
+  border: 1px solid #ffff;
   display: flex;
   gap: 16px;
   height: 70%;
@@ -172,6 +173,7 @@ export const SignUpWarp = styled.div`
 `;
 export const WelcomeBox = styled.div`
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   width: 160px;
@@ -183,11 +185,14 @@ export const WelcomeText = styled.p`
   color: #21a1c1;
   font-size: 16px;
   font-weight: 400;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const AddRecipeButton = styled(Link)`
   width: 100px;
-  height: 100%;
+  height: 70%;
   border-radius: 1em;
   background-color: #293644;
   font-size: 16px;
@@ -204,7 +209,7 @@ export const AddRecipeButton = styled(Link)`
 `;
 export const Logout = styled.button`
   width: 100px;
-  height: 100%;
+  height: 70%;
   border-radius: 1em;
   background-color: #293644;
   font-size: 16px;
@@ -222,4 +227,6 @@ export const Logout = styled.button`
 export const LogoutBox = styled.div`
   display: flex;
   gap: 16px;
+
+  align-items: center;
 `;

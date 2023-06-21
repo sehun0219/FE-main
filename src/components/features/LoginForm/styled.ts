@@ -69,7 +69,7 @@ export const Br = styled.div`
   border: 1px solid #708090;
 `;
 
-export const GoogleLogin = styled.div`
+export const Google = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
