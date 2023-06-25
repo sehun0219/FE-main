@@ -1,4 +1,4 @@
-import { ChangeEvent } from "react";
+import { ChangeEvent, useRef } from "react";
 import { UploadContainer, ImagePreview, FileInput, UploadText } from "./styled";
 
 interface ImgButtonProps {
@@ -7,6 +7,8 @@ interface ImgButtonProps {
 }
 
 const ImgButton = ({ onImageUpload, imgUrl = "" }: ImgButtonProps) => {
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
   const handleImageUpload = (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files ? e.target.files[0] : null;
     if (file && onImageUpload) {
@@ -14,16 +16,25 @@ const ImgButton = ({ onImageUpload, imgUrl = "" }: ImgButtonProps) => {
     }
   };
 
+  const handleImageClick = () => {
+    if (imgUrl && fileInputRef.current) {
+      fileInputRef.current.click();
+    }
+  };
+
   return (
     <UploadContainer>
       {!imgUrl && <UploadText>+ Add Picture</UploadText>}
       <FileInput
+        ref={fileInputRef}
         type="file"
         accept="image/*"
         onChange={handleImageUpload}
         id="upLoadButton"
       />
-      {imgUrl && <ImagePreview src={imgUrl} alt="Uploaded" />}
+      {imgUrl && (
+        <ImagePreview src={imgUrl} alt="Uploaded" onClick={handleImageClick} />
+      )}
     </UploadContainer>
   );
 };

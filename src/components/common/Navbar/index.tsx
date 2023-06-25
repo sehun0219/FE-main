@@ -1,7 +1,14 @@
-import { useState, MouseEvent, ChangeEvent, useContext } from "react";
+import {
+  useState,
+  MouseEvent,
+  ChangeEvent,
+  useContext,
+  useEffect,
+} from "react";
 import { UserContext } from "@/store/UserContext";
 import { useNavigate } from "react-router-dom";
 import { useSidebar } from "@/store/SidebarContext";
+import { useSearch } from "@/store/SearchContext";
 
 import {
   NavbarContainer,
@@ -24,12 +31,26 @@ import {
   LogoutWrap,
   SignUpWarp,
   LogoutBox,
+  Avatar,
+  AvatarBox,
 } from "./styled";
+import { getSearchList } from "@/apis/recipe";
 
 const Navbar = () => {
   const { toggleSidebar } = useSidebar();
   const navigate = useNavigate();
   const [search, setSearch] = useState("");
+  const [avatarImg, setAvatarImg] = useState("");
+  const { searchTerm, setSearchTerm } = useSearch();
+  useEffect(() => {
+    const userStorageItem = window.localStorage.getItem("userInfo") ?? null;
+    if (userStorageItem) {
+      const user = JSON.parse(userStorageItem);
+      if (user?._id) {
+        setAvatarImg(user.avatarImg);
+      }
+    }
+  }, []);
   const userContext = useContext(UserContext);
   if (!userContext) {
     return <div>Loading...</div>;
@@ -47,12 +68,19 @@ const Navbar = () => {
     setSearch(e.target.value);
   };
 
-  const handleSearchButton = (e: MouseEvent<HTMLButtonElement>) => {
+  const handleSearchButton = async (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    return null;
+    try {
+      const res = await getSearchList(search);
+      setSearchTerm(res);
+    } catch (error) {
+      console.error(error);
+    }
   };
+
   const handleCancel = () => {
     setSearch("");
+    setSearchTerm("");
   };
 
   return (
@@ -82,6 +110,9 @@ const Navbar = () => {
         {user?.name && token && (
           <LogoutWrap>
             <WelcomeBox>
+              <AvatarBox>
+                <Avatar src={"http://localhost:8080" + avatarImg} />
+              </AvatarBox>
               <WelcomeText>Welcome!! {user.email}</WelcomeText>
             </WelcomeBox>
             <LogoutBox>

@@ -16,35 +16,45 @@ import { UserContext } from "@/store/UserContext";
 import { useSidebar } from "@/store/SidebarContext";
 
 const Sidebar = () => {
-  const { isSidebarVisible } = useSidebar();
+  const { isSidebarVisible, setSelectedCategory } = useSidebar();
   const userContext = useContext(UserContext);
   if (!userContext) {
     return <div>Loading...</div>;
   }
   const { user, token } = userContext;
+  const handleCategoryClick = (category: string) => {
+    setSelectedCategory(category);
+  };
+
   return (
     <Container isSidebarVisible={isSidebarVisible}>
       <SideBarMenu>
-        <LinkTo to="/">Home</LinkTo>
+        <LinkTo href="/">Home</LinkTo>
         {!user?.name && !token && (
           <>
-            <LinkTo to="/login">Liked</LinkTo>
+            <LinkTo href="/login">Liked</LinkTo>
           </>
         )}
         {user?.name && token && (
           <>
-            <LinkTo to="/liked">Liked</LinkTo>
+            <LinkTo href="http://localhost:8080/user/liked">Liked</LinkTo>
           </>
         )}
-        <LinkTo to="/recent">Recent</LinkTo>
-        <LinkTo to="/login">Login</LinkTo>
+        <LinkTo href="/recent">Recent</LinkTo>
+        <LinkTo href="/login">Login</LinkTo>
       </SideBarMenu>
       <Br />
       <ShortCut>
         <ShortCutTitle>Quick Search</ShortCutTitle>
-        <ShortCutMeneComp>MainDish</ShortCutMeneComp>
-        <ShortCutMeneComp>Drink</ShortCutMeneComp>
-        <ShortCutMeneComp>Snack</ShortCutMeneComp>
+        <ShortCutMeneComp onClick={() => handleCategoryClick("Main dish")}>
+          MainDish
+        </ShortCutMeneComp>
+        <ShortCutMeneComp onClick={() => handleCategoryClick("Drink")}>
+          Drink
+        </ShortCutMeneComp>
+        <ShortCutMeneComp onClick={() => handleCategoryClick("Snack")}>
+          Snack
+        </ShortCutMeneComp>
       </ShortCut>
       <FooterBox>
         <Footer>

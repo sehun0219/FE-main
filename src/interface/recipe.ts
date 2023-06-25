@@ -18,7 +18,7 @@ export interface RecipeData {
   };
   coreItems: Array<{ itemName: string }>;
   ingredient: Array<{
-    name: string;
+    ingredient: string;
     quantity: string;
   }>;
   completedImg: Array<{
@@ -37,10 +37,12 @@ export interface RecipeData {
 }
 
 export interface CardData {
-  thumbNailImg: string;
+  mainImg: string;
   title: string;
   id: string;
   viewCount: number;
   date: string;
   avatarImg: string;
+  userInfo: string;
+  name: string;
 }

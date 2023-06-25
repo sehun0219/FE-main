@@ -8,9 +8,11 @@ export const Container = styled.div`
   padding: 32px;
 `;
 export const DummyContainer = styled.div`
+  display: flex;
+  justify-content: center;
   width: 100%;
   height: 100%;
-  padding-top: 15px;
+  padding-top: 16px;
 `;
 export const AddRecipeTitle = styled.div`
   display: flex;

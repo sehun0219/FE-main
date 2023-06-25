@@ -38,12 +38,17 @@ import {
   CoreText,
   EachStepCard,
   FooterBox,
+  SliderContainer,
+  ImageContainer,
+  Image,
+  PrevButton,
+  NextButton,
 } from "./styled";
-import { useEffect, useState } from "react";
-import DummyRecipeData from "@/store/DummyRecipeData";
+import { Key, useEffect, useState } from "react";
 import { RecipeData } from "@/interface/recipe";
 import Footer from "@/components/common/Footer";
-const DetailForm = () => {
+import { getRecipeDetail } from "@/apis/recipe";
+const DetailForm = ({ data }: any) => {
   const [recipeData, setRecipeData] = useState<RecipeData>({
     mainImg: "",
     title: "",
@@ -72,15 +77,62 @@ const DetailForm = () => {
   });
 
   useEffect(() => {
-    setRecipeData(DummyRecipeData[0]);
+    console.log(data._id);
+    getRecipeDetail(data._id).then((res) =>
+      setRecipeData({
+        mainImg: res[0].mainImg,
+        title: res[0].title,
+        category: res[0].category,
+        description: res[0].desc,
+        cookingInfo: {
+          servingSize: res[0].cookingInfo.servingSize,
+          cookingTime: res[0].cookingInfo.time,
+          difficulty: res[0].cookingInfo.difficulty,
+          type: res[0].category,
+        },
+        coreItems: [],
+        ingredient: res[0].ingredient,
+        completedImg: res[0].completedImgs,
+        cookingStep: res[0].cookingStep.map((i: any) => ({
+          stepNum: i.stepNum,
+          stepDesc: i.stepDesc,
+          stepImg: i.imgSrc,
+        })),
+        creator: {
+          avatarImg: JSON.parse(res[0].userInfo).avatarImg,
+          name: JSON.parse(res[0].userInfo).name,
+        },
+      })
+    );
   }, []);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const handlePrevClick = () => {
+    setCurrentIndex((oldCurrentIndex: number) => {
+      if (oldCurrentIndex === 0) {
+        return recipeData.completedImg.length - 1;
+      } else {
+        return oldCurrentIndex - 1;
+      }
+    });
+  };
+
+  const handleNextClick = () => {
+    setCurrentIndex(
+      (oldCurrentIndex: number) =>
+        (oldCurrentIndex + 1) % recipeData.completedImg.length
+    );
+  };
 
   return (
     <PageWrapper>
       <MainContentWrap>
         <MainWrap>
-          <MainImg src={recipeData.mainImg}></MainImg>
-          <AvatarImg src={recipeData.creator.avatarImg}></AvatarImg>
+          <MainImg
+            src={"http://localhost:8080/uploads/" + recipeData.mainImg}
+          ></MainImg>
+          <AvatarImg
+            src={"http://localhost:8080/" + recipeData.creator.avatarImg}
+          ></AvatarImg>
           <UserId>{recipeData.creator.name}</UserId>
           <Title>{recipeData.title}</Title>
           <Description>{recipeData.description}</Description>
@@ -107,7 +159,7 @@ const DetailForm = () => {
             <ContentsBox>
               {recipeData.ingredient.map((item, index) => (
                 <Item key={index}>
-                  <ItemName>{item.name}</ItemName>
+                  <ItemName>{item.ingredient}</ItemName>
                   <ItemQuantity>{item.quantity}</ItemQuantity>
                 </Item>
               ))}
@@ -122,14 +174,31 @@ const DetailForm = () => {
               <EachStepCard key={index}>
                 <StepNum>{item.stepNum}</StepNum>
                 <StepDesc>{item.stepDesc}</StepDesc>
-                <StepImg src={item.stepImg}></StepImg>
+                <StepImg
+                  src={"http://localhost:8080/uploads/" + item.stepImg}
+                ></StepImg>
               </EachStepCard>
             ))}
           </CookingStepCard>
         </CookingStepWrap>
+        <SliderContainer>
+          {recipeData.completedImg.map((img, index) => (
+            <ImageContainer
+              key={index}
+              style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+            >
+              <Image
+                src={"http://localhost:8080/uploads/" + img}
+                alt="slider image"
+              />
+            </ImageContainer>
+          ))}
+          <PrevButton onClick={handlePrevClick}>{"<"}</PrevButton>
+          <NextButton onClick={handleNextClick}>{">"}</NextButton>
+        </SliderContainer>
       </MainContentWrap>
 
-      <SideWrap>
+      {/* <SideWrap>
         <MostViewCard>
           <TextWrap>
             <CardTitle>Top Ranked</CardTitle>
@@ -180,7 +249,8 @@ const DetailForm = () => {
           <SideRecipeImg></SideRecipeImg>
           <SideRecipeTitle></SideRecipeTitle>
         </SideRecipeCard>
-      </SideWrap>
+      </SideWrap> */}
+
       <FooterBox>
         <Footer></Footer>
       </FooterBox>

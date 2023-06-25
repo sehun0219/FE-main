@@ -5,6 +5,7 @@ import {
   IngredientXButton,
   IngredientContentBox,
   ButtonWrap,
+  CoreCheck,
 } from "./styled";
 interface Ingredient {
   ingredient: string;
@@ -22,9 +23,11 @@ const IngredientForm = ({
 }: IngredientFormProps) => {
   return (
     <IngredientWarp>
+      {/* <CoreCheck>중요한 아이템 3개에 체크해주세요!</CoreCheck> */}
       {ingredientList.map((ingredient, index) => {
         return (
           <IngredientContentBox key={index}>
+            {/* <input type="checkbox" name="coreItem" value="true"></input> */}
             <IngredientInput
               placeholder="eg. Tomato"
               value={ingredient.ingredient}

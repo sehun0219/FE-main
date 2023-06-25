@@ -164,7 +164,6 @@ export const StyledLogin = styled(Link)`
   align-items: center;
 `;
 export const SignUpWarp = styled.div`
-  border: 1px solid #ffff;
   display: flex;
   gap: 16px;
   height: 70%;
@@ -173,14 +172,14 @@ export const SignUpWarp = styled.div`
 `;
 export const WelcomeBox = styled.div`
   display: flex;
-  flex-wrap: wrap;
+  gap: 16px;
   justify-content: center;
   align-items: center;
-  width: 160px;
+  width: 300px;
 `;
 
 export const WelcomeText = styled.p`
-  width: 100%;
+  width: 120px;
   height: 100%;
   color: #21a1c1;
   font-size: 16px;
@@ -229,4 +228,17 @@ export const LogoutBox = styled.div`
   gap: 16px;
 
   align-items: center;
+`;
+export const AvatarBox = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 60px;
+`;
+export const Avatar = styled.img`
+  border: none;
+  width: 90%;
+  height: 90%;
+  border-radius: 50%;
 `;

@@ -116,12 +116,16 @@ const AddRecipeForm = () => {
   const handleSave = async () => {
     const recipeFormData = new FormData();
     const name = userContext?.name; // 사용자의 이름에 접근
-    const email = userContext?.email; // 사용자의 이메일에 접근
+    const email = userContext?.email;
+    const avatarImg = userContext?.avatarImg; // 사용자의 이메일에 접근
     if (name !== null && name !== undefined) {
       recipeFormData.append("name", name);
     }
     if (email !== null && email !== undefined) {
       recipeFormData.append("email", email);
+    }
+    if (avatarImg !== null && avatarImg !== undefined) {
+      recipeFormData.append("avatarImg", avatarImg);
     }
     recipeFormData.append("title", title);
     recipeFormData.append("desc", desc);
@@ -247,7 +251,16 @@ const AddRecipeForm = () => {
       </ForthSection>
       <Br></Br>
       <SaveButton>
-        <Save onClick={handleSave}>UpLoad</Save>
+        <Save
+          onClick={() => {
+            const shouldSave = confirm("레시피를 등록할까요?");
+            if (shouldSave) {
+              handleSave();
+            }
+          }}
+        >
+          UpLoad
+        </Save>
       </SaveButton>
     </Container>
   );

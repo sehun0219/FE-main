@@ -2,7 +2,7 @@ export interface User {
   email: string;
   name: string;
   password: string;
-  profileImg: string;
+  avatarImg: string;
   __v: number;
   _id: string;
 }

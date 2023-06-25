@@ -4,6 +4,7 @@ import Main from "@/components/common/Main";
 import styled from "styled-components";
 import Sidebar from "@/components/common/SideBar";
 import { SidebarProvider } from "@/store/SidebarContext";
+import { SearchProvider } from "@/store/SearchContext";
 
 const Container = styled.div`
   width: 100%;
@@ -18,9 +19,11 @@ const Home = () => {
     <BaseLayout>
       <Container>
         <SidebarProvider>
-          <Navbar />
-          <Sidebar />
-          <Main />
+          <SearchProvider>
+            <Navbar />
+            <Sidebar />
+            <Main />
+          </SearchProvider>
         </SidebarProvider>
       </Container>
     </BaseLayout>

@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const PageWrapper = styled.div`
-  border: 2px solid red;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -16,11 +15,13 @@ export const MainContentWrap = styled.div`
 `;
 
 export const MainWrap = styled.div`
+  margin-top: 10px;
+  border: 2px solid #f6f7f9;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 4px solid #00ebed;
+
   width: 90%;
   height: 900px;
   padding: 10px 100px 10px 100px;
@@ -48,10 +49,8 @@ export const UserId = styled.p`
   font-size: large;
   display: flex;
   justify-content: center;
-  border: 1px solid #f1f1f1;
 `;
 export const Title = styled.div`
-  border: 1px solid #f1f1f1;
   width: 100%;
   margin: 10px;
   font-size: 30px;
@@ -61,7 +60,6 @@ export const Title = styled.div`
   color: #fff8e7;
 `;
 export const Description = styled.p`
-  border: 1px solid #f1f1f1;
   width: 100%;
   margin: 10px;
   display: flex;
@@ -72,7 +70,6 @@ export const Description = styled.p`
   padding: 12px;
 `;
 export const CookingInfo = styled.div`
-  border: 1px solid #f1f1f1;
   width: 100%;
   height: 120px;
   margin: 10px;
@@ -95,7 +92,7 @@ export const InfoItem = styled.p`
 `;
 
 export const IngredientsWrap = styled.div`
-  border: 2px solid #f1f112;
+  border: 2px solid #f6f7f9;
   width: 90%;
   padding: 60px 100px 40px 100px;
   display: flex;
@@ -198,6 +195,7 @@ export const EachStepCard = styled.div`
   width: 100%;
   display: flex;
   flex-wrap: wrap;
+  margin-bottom: 20px;
 `;
 export const StepNum = styled.div`
   width: 8%;
@@ -327,4 +325,64 @@ export const FooterBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+`;
+
+export const SliderContainer = styled.div`
+  border: 2px solid #f6f7f9;
+  width: 90%;
+  display: flex;
+  overflow: hidden;
+`;
+export const ImageContainer = styled.div`
+  flex-shrink: 0;
+  width: 100%;
+  transition: all 0.5s ease-in-out;
+  display: flex;
+`;
+
+export const Image = styled.img`
+  width: 100%;
+`;
+export const PrevButton = styled.button`
+  position: absolute;
+  left: 100;
+
+  background: transparent;
+  border: none;
+  font-size: 3rem;
+  color: #ffffff;
+  cursor: pointer;
+  padding: 0.5em;
+  padding-top: 280px;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: #777;
+  }
+
+  &:focus {
+    outline: none;
+  }
+`;
+
+export const NextButton = styled.button`
+  position: absolute;
+  right: 0;
+  background: transparent;
+  border: none;
+  font-size: 3rem;
+  color: #ffffff;
+  cursor: pointer;
+  padding: 0.5em;
+  padding-top: 280px;
+  margin-right: 500px;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: #777;
+  }
+
+  &:focus {
+    outline: none;
+  }
 `;

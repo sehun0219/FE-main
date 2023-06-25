@@ -2,6 +2,7 @@ import styled from "styled-components";
 import BaseLayout from "@/components/common/BaseLayout";
 import Navbar from "@/components/common/Navbar";
 import RecipeForm from "@/components/features/AddRecipeForm";
+import { SearchProvider } from "@/store/SearchContext";
 
 const MainContainer = styled.main`
   display: flex;
@@ -13,12 +14,12 @@ const MainContainer = styled.main`
 const AddRecipe = () => {
   return (
     <BaseLayout>
-      <header>
+      <SearchProvider>
         <Navbar />
-      </header>
-      <MainContainer>
-        <RecipeForm />
-      </MainContainer>
+        <MainContainer>
+          <RecipeForm />
+        </MainContainer>
+      </SearchProvider>
     </BaseLayout>
   );
 };

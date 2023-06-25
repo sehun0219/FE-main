@@ -45,3 +45,11 @@ export const IngredientXButton = styled.button`
   color: #f1f1f1;
   margin-left: -12px;
 `;
+
+export const CoreCheck = styled.p`
+  width: 240px;
+  font-weight: 400;
+  position: relative;
+  left: 50px;
+  top: 32px;
+`;

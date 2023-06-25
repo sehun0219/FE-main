@@ -1,5 +1,4 @@
 import { CardData } from "@/interface/recipe";
-import { useEffect, useState } from "react";
 import {
   CardWrap,
   ThumbNailImg,
@@ -17,25 +16,18 @@ interface RecipeCardProps {
 }
 
 const RecipeCard = ({ data }: RecipeCardProps) => {
-  const [thumbNail, setThumbNail] = useState(data.thumbNailImg || "");
-  useEffect(() => {
-    setThumbNail(data.thumbNailImg || "");
-  }, [data]);
-  const [avatarImg, setAvatarImg] = useState(data.avatarImg);
-  useEffect(() => {
-    setAvatarImg(data.avatarImg || "");
-  }, [data]);
-
   return (
     <CardWrap>
-      <ThumbNailImg src={thumbNail} />
+      <ThumbNailImg src={"http://localhost:8080/uploads/" + data.mainImg} />
       <WarpImgAvatarAndDetails>
         <ThumbNailDetails>
-          <ThumbNailAvatar src={avatarImg} />
+          <ThumbNailAvatar
+            src={"http://localhost:8080/" + JSON.parse(data.userInfo).avatarImg}
+          />
         </ThumbNailDetails>
         <DetailsContent>
           <RecipeTitle>{data.title}</RecipeTitle>
-          <UserId>{data.id}</UserId>
+          <UserId>{JSON.parse(data.userInfo).name}</UserId>
           <ViewCount>
             View {data.viewCount} · {data.date}
           </ViewCount>

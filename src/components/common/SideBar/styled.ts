@@ -31,7 +31,7 @@ export const ShortCutTitle = styled.p`
   text-decoration: underline;
 `;
 
-export const LinkTo = styled(Link)`
+export const LinkTo = styled.a`
   width: 80%;
   height: 40px;
   margin: -25px;

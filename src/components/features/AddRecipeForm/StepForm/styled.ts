@@ -23,7 +23,7 @@ export const StepText = styled.textarea`
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   resize: none;
   width: 650px;
-  height: 250px;
+  height: 200px;
   margin-right: 10px;
   padding: 24px;
   font-size: 24px;

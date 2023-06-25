@@ -1,18 +1,21 @@
 import BaseLayout from "@/components/common/BaseLayout";
 import Navbar from "@/components/common/Navbar";
 import DetailForm from "@/components/features/DetailForm";
-import { SidebarProvider } from "@/store/SidebarContext";
+import { SearchProvider } from "@/store/SearchContext";
 import { UserProvider } from "@/store/UserContext";
+import { useLocation } from "react-router-dom";
 
 const Details = () => {
+  const location = useLocation();
+
   return (
     <BaseLayout>
-      <UserProvider>
-        <SidebarProvider>
+      <SearchProvider>
+        <UserProvider>
           <Navbar />
-          <DetailForm />
-        </SidebarProvider>
-      </UserProvider>
+          <DetailForm data={location.state.data} />
+        </UserProvider>
+      </SearchProvider>
     </BaseLayout>
   );
 };
